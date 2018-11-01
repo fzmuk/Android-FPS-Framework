@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000013501991808}
-  - component: {fileID: 95000012490115852}
+  - component: {fileID: 195028743997919970}
   m_Layer: 0
   m_Name: FPS_Character_prefab
   m_TagString: Untagged
@@ -2244,24 +2244,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010269019752}
   m_Mesh: {fileID: 4300002, guid: 6cae2f82a0a62ff4ab9be3eeeda19688, type: 3}
---- !u!95 &95000012490115852
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010973930614}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6cae2f82a0a62ff4ab9be3eeeda19688, type: 3}
-  m_Controller: {fileID: 9100000, guid: 12943ab764780a14da39c53d2c103da6, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!137 &137000011658862538
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2490,3 +2472,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.41463163, y: 0.24361056, z: -0.032787316}
     m_Extent: {x: 0.3704299, y: 0.22089186, z: 0.25356382}
   m_DirtyAABB: 0
+--- !u!195 &195028743997919970
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010973930614}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
