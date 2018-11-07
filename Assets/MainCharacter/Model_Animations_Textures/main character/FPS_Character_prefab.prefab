@@ -337,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013501991808}
   - component: {fileID: 195028743997919970}
+  - component: {fileID: 114344838775521406}
   m_Layer: 0
   m_Name: FPS_Character_prefab
   m_TagString: Untagged
@@ -2067,16 +2068,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010973930614}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.0021966945, y: 0.46836248, z: 0.0558943, w: 0.881764}
+  m_LocalPosition: {x: 76.80134, y: 47.88127, z: 50.501305}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children:
   - {fileID: 4000013305687064}
   - {fileID: 4000013010608572}
   - {fileID: 4000011977045938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.779, y: 55.811, z: 5.782}
 --- !u!4 &4000013509240856
 Transform:
   m_ObjectHideFlags: 1
@@ -2244,6 +2245,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010269019752}
   m_Mesh: {fileID: 4300002, guid: 6cae2f82a0a62ff4ab9be3eeeda19688, type: 3}
+--- !u!114 &114344838775521406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010973930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0413882f670a7634fae8dd040454df68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1000010973930614}
 --- !u!137 &137000011658862538
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

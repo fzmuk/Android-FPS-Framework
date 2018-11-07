@@ -1,3 +1,10 @@
-﻿{
-	"name": "Game"
+{
+    "name": "Game",
+    "references": [
+        "Framework"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }
