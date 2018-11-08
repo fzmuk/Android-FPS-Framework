@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/FPS_Game.unity
+    guid: 3bddb64cd9b5b1e4abb9f985b778a4c3
   m_configObjects: {}
