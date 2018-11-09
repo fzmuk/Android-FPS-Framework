@@ -13,8 +13,8 @@ public class PlayerRotate : MonoBehaviour {
         var swipeDetection = player.AddComponent<SwipeDetection>();
         playerRotate = new PlayerMovement.PlayerRotate(swipeDetection, player);
 	}
-	
+
 	void Update () {
         playerRotate.RotatePlayer();
-	}
+    }
 }
