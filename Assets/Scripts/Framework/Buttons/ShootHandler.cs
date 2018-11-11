@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Buttons
 {
 
-    public class SquatHandler : MonoBehaviour, IButtonHandler
+    public class ShootHandler : MonoBehaviour, IButtonHandler
     {
 
         // Use this for initialization
@@ -25,7 +25,7 @@ namespace Buttons
         public void Click()
         {
             //temporary just show text in debug log
-            Debug.Log("Squat click: clicked");
+            Debug.Log("Shoot click: clicked");
         }
 
         public void Pressed()

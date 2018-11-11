@@ -6,7 +6,9 @@ namespace Buttons
 {
     public interface IButtonHandler
     {
-        void Squat_Click();
+        void Click();
+        void Pressed();
+        void Released();
     }
 
 }
