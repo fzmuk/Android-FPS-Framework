@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Buttons
 {
@@ -11,7 +12,9 @@ namespace Buttons
         // Use this for initialization
         void Start()
         {
-
+            Button button = gameObject.GetComponent<Button>();
+            button.onClick.AddListener(Squat_Click);
+ 
         }
 
         // Update is called once per frame
@@ -23,6 +26,11 @@ namespace Buttons
         public void Squat_Click()
         {
             Debug.Log("Squat click: clicked");
+        }
+
+        public void Squat_Clicked()
+        {
+
         }
     }
 
