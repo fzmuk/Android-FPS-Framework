@@ -25,7 +25,7 @@ namespace Buttons
         public void Click()
         {
             //temporary just show text in debug log
-            Debug.Log("Shoot click: clicked");
+            Debug.Log("Clicked SHOOT");
         }
 
         public void Pressed()

@@ -14,6 +14,7 @@ namespace Buttons
         {
             Button button = gameObject.GetComponent<Button>();
             button.onClick.AddListener(Click);
+            
         }
 
         // Update is called once per frame
@@ -22,10 +23,15 @@ namespace Buttons
 
         }
 
+        void OnPointerDown()
+        {
+            Debug.Log("Pointer down SQUAT");
+        }
+
         public void Click()
         {
             //temporary just show text in debug log
-            Debug.Log("Squat click: clicked");
+            Debug.Log("Clicked SQUAT");
         }
 
         public void Pressed()
@@ -36,6 +42,7 @@ namespace Buttons
         {
 
         }
+
     }
 
 
