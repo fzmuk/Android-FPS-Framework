@@ -9,24 +9,26 @@ namespace DisplacementDetection
     public class SwipeDetection : MonoBehaviour, IDisplacement
     {
         public Vector2 Shift { get; private set; }
+
         public float MovmentRate { get; set; }
 
         private int fingerId;
         private bool inputSelected;
 
 #if UNITY_EDITOR
+        // used for mouse debugging in Unity editor
         public Vector3 MouseShift;
         bool mouseDrag = false;
 #endif
 
-        void Start()
+        private void Start()
         {
-            MovmentRate = 0.8f;
+            MovmentRate = 1f;
             inputSelected = false;
             Shift = new Vector2();
         }
 
-        void Update()
+        private void Update()
         {
             Shift = new Vector2();
 
@@ -57,6 +59,7 @@ namespace DisplacementDetection
 
             }
 #if UNITY_EDITOR
+            // used for mouse debugging in Unity editor
             if (Input.GetMouseButtonDown(0))
             {
                 MouseShift = Input.mousePosition;

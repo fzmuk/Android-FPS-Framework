@@ -12,7 +12,9 @@ namespace PlayerMovement
         private IDisplacement shiftInput;
         private GameObject player;
 
+
         public float AngleLimitUp { get; set; }
+
         public float AngleLimitDown { get; set; }
 
         public PlayerRotate(IDisplacement shiftInput, GameObject player)
@@ -22,7 +24,6 @@ namespace PlayerMovement
             AngleLimitUp = 45f;
             AngleLimitDown = 45f;
         }
-
 
         public void RotatePlayer()
         {
