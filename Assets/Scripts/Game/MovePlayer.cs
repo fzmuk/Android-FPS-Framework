@@ -16,6 +16,6 @@ public class MovePlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        agent.PlayerMove(5000);
+        agent.PlayerMove(200); //za mob 200, za komp 2000
     }
 }
