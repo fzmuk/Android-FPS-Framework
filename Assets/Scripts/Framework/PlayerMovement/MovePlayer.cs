@@ -21,10 +21,14 @@ namespace PlayerMovement
             var inputVector = displacementInput.Shift;
             var agent = player.GetComponent<NavMeshAgent>();
             Vector3 moveVector;
+
+
             if (inputVector.x != 0 && inputVector.y != 0)
             {
                 moveVector = new Vector3(inputVector.x, 0, inputVector.y);
-                agent.Move(moveVector*(agent.speed/ slow));
+          
+                agent.Move(agent.transform.TransformDirection(moveVector) * (agent.speed / slow));
+                
             }
                  
         }
