@@ -10,17 +10,18 @@ namespace PlayerMovement
     {
 
         private IDisplacement shiftInput;
-        private GameObject player;
+        private GameObject verticalRotationObject;
+        private GameObject horizontalRotationObject;
 
 
         public float AngleLimitUp { get; set; }
-
         public float AngleLimitDown { get; set; }
 
-        public PlayerRotate(IDisplacement shiftInput, GameObject player)
+        public PlayerRotate(IDisplacement shiftInput, GameObject verticalRotationObject, GameObject horizontalRotationObject)
         {
             this.shiftInput = shiftInput;
-            this.player = player;
+            this.verticalRotationObject = verticalRotationObject;
+            this.horizontalRotationObject = horizontalRotationObject;
             AngleLimitUp = 45f;
             AngleLimitDown = 45f;
         }
@@ -29,16 +30,16 @@ namespace PlayerMovement
         {
             var shift = shiftInput.Shift;
 
-            // rotation up-down
-            player.transform.Rotate(Vector3.left, shift.y, Space.Self);
+            // vertical rotation
+            verticalRotationObject.transform.Rotate(Vector3.left, shift.y, Space.Self);
             //clamp up-down angle
-            var anglesVector = player.transform.eulerAngles;
+            var anglesVector = verticalRotationObject.transform.eulerAngles;
             var angle = anglesVector.x;
             anglesVector.x = RotationClamp.ClampAngle(angle, AngleLimitDown, AngleLimitUp);
-            player.transform.eulerAngles = anglesVector;
+            verticalRotationObject.transform.eulerAngles = anglesVector;
 
-            //rotation left-right
-            player.transform.Rotate(Vector3.up, shift.x, Space.World);
+            // horizontal rotation
+            horizontalRotationObject.transform.Rotate(Vector3.up, shift.x, Space.World);
         }
     }
 
