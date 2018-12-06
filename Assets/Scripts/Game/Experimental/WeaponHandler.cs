@@ -27,4 +27,10 @@ public class WeaponHandler : MonoBehaviour
         return transform.position;
     }
 
+    /* all in one */
+    public Transform getWeaponTransform()
+    {
+        return transform;
+    }
+
 }

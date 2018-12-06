@@ -9,6 +9,7 @@ namespace Assets.Scripts.Framework.Experimental
     public interface IBallisticFramework
     {
         void Init(float azimuth, float elevation, Vector3 position);
+        void Init(Transform transform);
         void OnUpdate();
     }
 }

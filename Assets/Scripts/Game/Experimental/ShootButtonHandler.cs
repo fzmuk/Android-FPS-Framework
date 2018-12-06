@@ -36,6 +36,7 @@ namespace Assets.Scripts.Game.Experimental
             if (frameworkButtonHandler != null)
                 frameworkButtonHandler.OnClick();
           
+            /*
             if (weaponHandler!=null)
             {
                 float elevation = weaponHandler.GetWeaponElevation();
@@ -43,9 +44,14 @@ namespace Assets.Scripts.Game.Experimental
                 Vector3 position = weaponHandler.GetWeaponPosition();
                 if (ballistics != null)
                     ballistics.Init(azimuth,elevation,position);
+            } 
+            */
+            if(weaponHandler != null)
+            {
+                Transform transform = weaponHandler.getWeaponTransform();
+                if (ballistics != null)
+                    ballistics.Init(transform);
             }
-
-            
         }
 
         public void Pressed()
