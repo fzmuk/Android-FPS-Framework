@@ -40,8 +40,9 @@ namespace Assets.Scripts.Game.Experimental
             {
                 float elevation = weaponHandler.GetWeaponElevation();
                 float azimuth = weaponHandler.GetWeaponAzimuth();
+                Vector3 position = weaponHandler.GetWeaponPosition();
                 if (ballistics != null)
-                    ballistics.Init(azimuth,elevation);
+                    ballistics.Init(azimuth,elevation,position);
             }
 
             

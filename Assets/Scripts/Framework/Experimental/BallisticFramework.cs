@@ -20,9 +20,9 @@ namespace Assets.Scripts.Framework.Experimental
 
         }
 
-        public void Init(float azimuth, float elevation)
+        public void Init(float azimuth, float elevation, Vector3 position)
         {
-            Debug.Log("Balistic shot at elevation "+elevation+" radians in azimuthal direction of "+azimuth+" radians");
+            Debug.Log("Ballistic: shot at elevation "+elevation+" radians in azimuthal direction of "+azimuth+" radians starting from x: "+position.x+", y: "+position.y+", z: "+position.z);
         }
 
         public void OnUpdate()

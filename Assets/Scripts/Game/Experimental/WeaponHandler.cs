@@ -22,5 +22,9 @@ public class WeaponHandler : MonoBehaviour
     {
         return Mathf.Deg2Rad * transform.eulerAngles.y;
     }
+    public Vector3 GetWeaponPosition()
+    {
+        return transform.position;
+    }
 
 }
