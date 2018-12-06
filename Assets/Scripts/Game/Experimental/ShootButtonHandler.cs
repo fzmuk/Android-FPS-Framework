@@ -12,6 +12,7 @@ namespace Assets.Scripts.Game.Experimental
     {
         protected IShootButtonFramework frameworkButtonHandler;
         protected IBallisticFramework ballistics;
+        public WeaponHandler weaponHandler;
 
         void Start()
         {
@@ -21,21 +22,29 @@ namespace Assets.Scripts.Game.Experimental
             button.onClick.AddListener(Click);
 
             frameworkButtonHandler = new ShootButtonFramework();
-            ballistics = new BallisticFramework();
-
+            weaponHandler = GameObject.FindObjectOfType(typeof(WeaponHandler)) as WeaponHandler;
+            ballistics = new BallisticFramework(0.01f, 600.0f, 0.368f);
         }
         //updated for each frame
         void Update()
         {
-            ballistics.OnUpdate();
+            ballistics.OnUpdate(); 
         }
         //calls for button click
         public void Click()
         {
             if (frameworkButtonHandler != null)
                 frameworkButtonHandler.OnClick();
-            if (ballistics != null)
-                ballistics.Init();
+          
+            if (weaponHandler!=null)
+            {
+                float elevation = weaponHandler.GetWeaponElevation();
+                float azimuth = weaponHandler.GetWeaponAzimuth();
+                if (ballistics != null)
+                    ballistics.Init(azimuth,elevation);
+            }
+
+            
         }
 
         public void Pressed()

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Framework.Experimental
 {
     public interface IBallisticFramework
     {
-        void Init();
+        void Init(float azimuth, float elevation);
         void OnUpdate();
     }
 }

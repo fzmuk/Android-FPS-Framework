@@ -11,7 +11,7 @@ namespace Assets.Scripts.Framework.Experimental
     {
         public void OnClick()
         {
-            Debug.Log("Framework: Button shoot clicked.");
+
         }
 
     }

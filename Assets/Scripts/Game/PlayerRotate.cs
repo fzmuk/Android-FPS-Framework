@@ -15,7 +15,8 @@ public class PlayerRotate : MonoBehaviour {
         playerRotate = new PlayerMovement.PlayerRotate(swipeDetection, playerHands, player);
 	}
 
-	void Update () {
+    void Update ()
+    {
         playerRotate.RotatePlayer();
     }
 }
