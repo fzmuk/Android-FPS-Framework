@@ -8,8 +8,8 @@ namespace Assets.Scripts.Framework.Experimental
 {
     public interface IBallisticFramework
     {
-        void Init(float azimuth, float elevation, Vector3 position);
-        void Init(Transform transform);
+        void Init(IBallisticCalculation calculation, double azimuth, double elevation, Vector3 position, double speed);
+        void Init(IBallisticCalculation calculation, Transform transform, double speed);
         void OnUpdate();
     }
 }

@@ -12,6 +12,7 @@ namespace Assets.Scripts.Game.Experimental
     {
         protected IShootButtonFramework frameworkButtonHandler;
         protected IBallisticFramework ballistics;
+        protected IBallisticCalculation calculation;
         public WeaponHandler weaponHandler;
 
         void Start()
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Game.Experimental
 
             frameworkButtonHandler = new ShootButtonFramework();
             weaponHandler = GameObject.FindObjectOfType(typeof(WeaponHandler)) as WeaponHandler;
-            ballistics = new BallisticFramework(0.01f, 600.0f, 0.368f);
+            ballistics = new BallisticFramework();
         }
         //updated for each frame
         void Update()
@@ -50,7 +51,10 @@ namespace Assets.Scripts.Game.Experimental
             {
                 Transform transform = weaponHandler.getWeaponTransform();
                 if (ballistics != null)
-                    ballistics.Init(transform);
+                {
+                    calculation = new BallisticCalcBullet(0.01, 0.5, 1.23, 0.0001);
+                    ballistics.Init(calculation, weaponHandler.getWeaponTransform(),600.0);
+                }
             }
         }
 

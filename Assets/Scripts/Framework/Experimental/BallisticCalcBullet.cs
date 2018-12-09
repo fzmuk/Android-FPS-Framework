@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Framework.Experimental
 {
-    class BallisticCalcBullet : IBallisticCalculation
+    public class BallisticCalcBullet : IBallisticCalculation
     {
         private double g;
         private double m, Cv, ro, A, D;
-        BallisticCalcBullet(double m, double Cv, double ro, double A)
+        public BallisticCalcBullet(double m, double Cv, double ro, double A)
         {
             g = 9.81;
             m = 0.02;
@@ -33,7 +33,7 @@ namespace Assets.Scripts.Framework.Experimental
             else
                 angle = -3.1415927 / 2.0;
         }
-        void Calculate(ref double x, ref double y, ref double vx, ref double vy, double h)
+        public void Calculate(ref double x, ref double y, ref double vx, ref double vy, double h)
         {
             RungeKuttaDynamics(ref vx, ref vy, h);
             x += h * vx;
