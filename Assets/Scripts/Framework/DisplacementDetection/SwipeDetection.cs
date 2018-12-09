@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 
 namespace DisplacementDetection
 {
-    public class SwipeDetection : MonoBehaviour, IDisplacement
+    public class SwipeDetection : IDisplacement
     {
         public Vector2 Shift { get; private set; }
 
-        public float MovmentRate { get; set; }
+        public float MovementRate { get; set; }
 
         private int fingerId;
         private bool inputSelected;
@@ -20,15 +20,14 @@ namespace DisplacementDetection
         public Vector3 MouseShift;
         bool mouseDrag = false;
 #endif
-
-        private void Start()
+        public SwipeDetection()
         {
-            MovmentRate = 1f;
+            MovementRate = 1f;
             inputSelected = false;
             Shift = new Vector2();
         }
 
-        private void Update()
+        public void UpdateShift()
         {
             Shift = new Vector2();
 
@@ -38,7 +37,7 @@ namespace DisplacementDetection
                 {
                     if (touch.fingerId == fingerId)
                     {
-                        Shift = MovmentRate * touch.deltaPosition * touch.deltaTime;
+                        Shift = MovementRate * touch.deltaPosition * touch.deltaTime;
                         if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                         {
                             inputSelected = false;

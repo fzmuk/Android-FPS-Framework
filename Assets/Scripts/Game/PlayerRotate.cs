@@ -5,17 +5,21 @@ using DisplacementDetection;
 using PlayerMovement;
 
 public class PlayerRotate : MonoBehaviour {
+
     public GameObject player;
     public GameObject playerHands;
 
     private PlayerMovement.PlayerRotate playerRotate;
 
+    private SwipeDetection swipeDetection;
+
 	void Start () {
-        IDisplacement swipeDetection = player.AddComponent<SwipeDetection>();
+        swipeDetection = new SwipeDetection();
         playerRotate = new PlayerMovement.PlayerRotate(swipeDetection, playerHands, player);
 	}
 
 	void Update () {
+        swipeDetection.UpdateShift();
         playerRotate.RotatePlayer();
     }
 }
