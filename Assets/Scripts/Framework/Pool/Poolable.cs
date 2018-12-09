@@ -9,11 +9,11 @@ namespace Pool
     {
         protected int poolInitialSize = 1;
 
-        protected Pool<Poolable> pool;
+        public Pool<Poolable> Pool { get; set; }
 
-        public void Reset() { }
+        public abstract void Reset();
 
-        public void Initialize() { }
+        public abstract void Initialize();
 
     }
 }

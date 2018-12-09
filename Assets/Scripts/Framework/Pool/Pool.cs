@@ -37,7 +37,15 @@ namespace Pool
             this.availableItems.Add(item);
         }
 
-        public T Get()
+        public void Return(T item)
+        {
+            if(this.Contains(item) && !this.availableItems.Contains(item))
+            {
+                this.availableItems.Add(item);
+            }
+        }
+
+        public T Get() 
         {
             if(this.availableItems.Count > 0)
             {

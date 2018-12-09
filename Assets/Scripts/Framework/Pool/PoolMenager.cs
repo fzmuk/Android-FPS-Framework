@@ -38,5 +38,10 @@ namespace Pool
 
             return this.pools[prefab].Get();
         }
+
+        private void Return(Poolable item)
+        {
+            item.Pool.Return(item);
+        }
     }
 }
