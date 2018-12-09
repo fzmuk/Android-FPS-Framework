@@ -7,24 +7,21 @@ namespace Enemy
 {
     public class Enemy
     {
-        public NavMeshAgent Agent;
         private float detectionDistance;
-        private int speed;
-        private int acceleration;
-        private int stopingDistance;
-
         private float range;
+
+        public NavMeshAgent Agent;        
 
         public Enemy(NavMeshAgent agent)
         {
             Agent = agent;
         }
 
-        public int StopingDistance
+        public float StopingDistance
         {
             get
             {
-                return stopingDistance;
+                return Agent.stoppingDistance;
             }
             set
             {
@@ -32,11 +29,11 @@ namespace Enemy
             }
         }
 
-        public int Acceleration
+        public float Acceleration
         {
             get
             {
-                return acceleration;
+                return Agent.acceleration;
             }
             set
             {
@@ -44,11 +41,11 @@ namespace Enemy
             }
         }
 
-        public int Speed
+        public float Speed
         {
             get
             {
-                return speed;
+                return Agent.speed;
             }
             set
             {
