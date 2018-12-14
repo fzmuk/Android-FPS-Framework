@@ -33,9 +33,6 @@ namespace Assets.Scripts.Game.Experimental
         //updated for each frame
         void Update()
         {
-            
-
-            // need to pass projectile Transform
             ballistics.OnUpdate(); 
         }
         //calls for button click
@@ -66,9 +63,9 @@ namespace Assets.Scripts.Game.Experimental
                     dummyProjectile.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
                     dummyProjectile.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-                    double gamescale = 0.05;
+                    double gamescale = 0.02;
 
-                    calculation = new BallisticCalcBullet(0.01, 9.81, 0.6, 1.23*gamescale, 0.0002); //m, g, Cx, ro, A
+                    calculation = new BallisticCalcBullet(0.01, 9.81, 0.6, 1.23/gamescale, 0.0002); //m, g, Cx, ro, A
                     ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(),600.0*gamescale);
                 }
             }

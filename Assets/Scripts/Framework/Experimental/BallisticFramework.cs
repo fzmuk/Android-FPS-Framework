@@ -36,7 +36,7 @@ namespace Assets.Scripts.Framework.Experimental
             y = 0.0;
             vx = speed * Math.Cos(elevation); //projectile initial conditions
             vy = speed * Math.Sin(elevation); //projectile initial conditions
-            Debug.Log("Ballistic: shot at elevation "+elevation+" radians in azimuthal direction of "+azimuth+" radians starting from x: "+position.x+", y: "+position.y+", z: "+position.z);
+            //Debug.Log("Ballistic: shot at elevation "+elevation+" radians in azimuthal direction of "+azimuth+" radians starting from x: "+position.x+", y: "+position.y+", z: "+position.z);
         }
 
         public void Init(GameObject projectile, IBallisticCalculation calculation, Transform transform, double speed)
@@ -55,8 +55,8 @@ namespace Assets.Scripts.Framework.Experimental
             y = 0.0;
             vx = speed * Math.Cos(elevation); //projectile initial conditions
             vy = speed * Math.Sin(elevation); //projectile initial conditions
-            Debug.Log("Weapon pos: x: " + transform.position.x + ", y: " + transform.position.y + ", z: " + transform.position.z);
-            Debug.Log("Ballistic: shot at elevation " + elevation + " radians in azimuthal direction of " + azimuth + " radians starting from x: " + x + ", y: " + y);
+            //Debug.Log("Weapon pos: x: " + transform.position.x + ", y: " + transform.position.y + ", z: " + transform.position.z);
+            //Debug.Log("Ballistic: shot at elevation " + elevation + " radians in azimuthal direction of " + azimuth + " radians starting from x: " + x + ", y: " + y);
         }
 
         public void OnUpdate()
