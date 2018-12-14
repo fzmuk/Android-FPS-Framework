@@ -13,7 +13,10 @@ namespace Assets.Scripts.Game.Experimental
         protected IShootButtonFramework frameworkButtonHandler;
         protected IBallisticFramework ballistics;
         protected IBallisticCalculation calculation;
+        protected GameObject dummyProjectile;
         public WeaponHandler weaponHandler;
+
+        
 
         void Start()
         {
@@ -24,18 +27,24 @@ namespace Assets.Scripts.Game.Experimental
 
             frameworkButtonHandler = new ShootButtonFramework();
             weaponHandler = GameObject.FindObjectOfType(typeof(WeaponHandler)) as WeaponHandler;
+
             ballistics = new BallisticFramework();
         }
         //updated for each frame
         void Update()
         {
+            
+
+            // need to pass projectile Transform
             ballistics.OnUpdate(); 
         }
         //calls for button click
         public void Click()
         {
             if (frameworkButtonHandler != null)
+            {
                 frameworkButtonHandler.OnClick();
+            }
           
             /*
             if (weaponHandler!=null)
@@ -52,8 +61,15 @@ namespace Assets.Scripts.Game.Experimental
                 Transform transform = weaponHandler.getWeaponTransform();
                 if (ballistics != null)
                 {
-                    calculation = new BallisticCalcBullet(0.01, 0.5, 1.23, 0.0001);
-                    ballistics.Init(calculation, weaponHandler.getWeaponTransform(),600.0);
+                    //temporaly 
+                    dummyProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    dummyProjectile.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
+                    dummyProjectile.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+                    double gamescale = 0.05;
+
+                    calculation = new BallisticCalcBullet(0.01, 9.81, 0.6, 1.23*gamescale, 0.0002); //m, g, Cx, ro, A
+                    ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(),600.0*gamescale);
                 }
             }
         }

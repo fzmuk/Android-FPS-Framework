@@ -10,13 +10,22 @@ namespace Assets.Scripts.Framework.Experimental
     {
         private double g;
         private double m, Cv, ro, A, D;
-        public BallisticCalcBullet(double m, double Cv, double ro, double A)
+        public BallisticCalcBullet(double gamescale)
         {
             g = 9.81;
             m = 0.02;
             Cv = 0.5;
             ro = 1.23;
             A = 0.0001;
+            D = 0.5 * Cv * ro * A;
+        }
+        public BallisticCalcBullet(double m, double g, double Cv, double ro, double A)
+        {
+            this.g = g;
+            this.m = m;
+            this.Cv = Cv;
+            this.ro = ro;
+            this.A = A;
             D = 0.5 * Cv * ro * A;
         }
 
@@ -29,9 +38,9 @@ namespace Assets.Scripts.Framework.Experimental
             if (vx > 0.00001 || vx < -0.00001)
                 angle = (float)Math.Atan(vy / vx);
             else if (vx >= 0)
-                angle = 3.1415927 / 2.0;
+                angle = 3.1415927 * 0.5;
             else
-                angle = -3.1415927 / 2.0;
+                angle = -3.1415927 * 0.5;
         }
         public void Calculate(ref double x, ref double y, ref double vx, ref double vy, double h)
         {
@@ -55,7 +64,7 @@ namespace Assets.Scripts.Framework.Experimental
             k2 = h * DynamicsY(vy + k1 * 0.5);
             k3 = h * DynamicsY(vy + k2 * 0.5);
             k4 = h * DynamicsY(vy + k3);
-            vy += (k1 + k2 * 2.0 + k3 * 2.0 + k4) * sixth;
+            vy += (k1 + k2 * 2.0 + k3 * 2.0 + k4) * sixth;   
         }
 
         private double DynamicsX(double vx)
