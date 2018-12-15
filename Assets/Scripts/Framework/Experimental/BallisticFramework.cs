@@ -34,6 +34,8 @@ namespace Assets.Scripts.Framework.Experimental
             time = DateTime.Now;
             x = 0.0;
             y = 0.0;
+            double gamescale = calculation.GetGamescale();
+            speed *= gamescale;
             vx = speed * Math.Cos(elevation); //projectile initial conditions
             vy = speed * Math.Sin(elevation); //projectile initial conditions
             //Debug.Log("Ballistic: shot at elevation "+elevation+" radians in azimuthal direction of "+azimuth+" radians starting from x: "+position.x+", y: "+position.y+", z: "+position.z);
@@ -53,6 +55,8 @@ namespace Assets.Scripts.Framework.Experimental
             time = DateTime.Now;
             x = 0.0;
             y = 0.0;
+            double gamescale = calculation.GetGamescale();
+            speed *= gamescale;
             vx = speed * Math.Cos(elevation); //projectile initial conditions
             vy = speed * Math.Sin(elevation); //projectile initial conditions
             //Debug.Log("Weapon pos: x: " + transform.position.x + ", y: " + transform.position.y + ", z: " + transform.position.z);

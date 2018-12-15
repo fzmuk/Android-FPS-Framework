@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
 
 namespace Assets.Scripts.Framework.Experimental
 {
     /* template method pattern */
-    public class BallisticCalcBullet : BallisticCalculation
+    public class BallisticCalcGrenade : BallisticCalculation
     {
-        public BallisticCalcBullet(double m, double g, double Cv, double ro, double A, double gamescale)
+        public BallisticCalcGrenade(double m, double g, double Cv, double ro, double A, double gamescale)
         {
             this.g = g * gamescale;
             this.m = m;
@@ -22,12 +21,12 @@ namespace Assets.Scripts.Framework.Experimental
         //overrider hook methods
         protected override double DynamicsX(double vx)
         {
-            return -D * Math.Abs(vx) * vx / m;
+            return -D * vx / m;
         }
 
         protected override double DynamicsY(double vy)
         {
-            return -D * Math.Abs(vy) * vy / m - g;
+            return -D * vy / m - g;
         }
     }
 }
