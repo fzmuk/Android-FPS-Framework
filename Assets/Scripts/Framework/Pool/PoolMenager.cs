@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
+
 
 namespace Pool
 {
     public class PoolMenager
     {
-        public List<Type> poolables;
+        private Dictionary<String, Pool> pools;
 
-        private Dictionary<Type, Pool<Poolable>> pools;
+        private static PoolMenager instance = null;
 
-        private PoolMenager instance = null;
-
-        public PoolMenager Instance {
+        public static PoolMenager Instance {
             get
             {
                 if (instance == null)
@@ -24,28 +24,49 @@ namespace Pool
             }
         }
 
-        private PoolMenager()
+        public PoolMenager()
         {
-            this.poolables = new List<Type>();
-            this.pools = new Dictionary<Type, Pool<Poolable>>();
+            //this.poolables = new List<Type>();
+            pools = new Dictionary<String, Pool>();
         }
 
-
-        
-        private Poolable GetPoolable<T>() where T: Poolable
+        public Pool CreatePool(GameObject prefab)
         {
-            if(!poolables.Contains(typeof(T)))
+            Pool pool = new Pool(prefab);
+            pools.Add(prefab.name, pool);
+            return pool;
+        }
+
+        public Pool CreatePool(GameObject prefab, int poolSize)
+        {
+            Pool pool = new Pool(prefab, poolSize);
+            pools.Add(prefab.name, pool);
+            return pool;
+        }
+
+        public GameObject GetFromPool(GameObject prefab)
+        {
+            if(pools.ContainsKey(prefab.name))
             {
-                poolables.Add(typeof(T));
-                pools.Add(typeof(T), new Pool<Poolable>());
+                return GetFromPool(prefab.name);
             }
-
-            return this.pools[typeof(T)].Get();
+            else
+            {
+                return CreatePool(prefab).Get();
+            }
         }
 
-        private void Return(Poolable item)
+        public GameObject GetFromPool(string prefabName)
         {
-            item.Pool.Return(item);
+            return pools[prefabName].Get();
+        }
+
+        public void ReturnToPool(GameObject gameObject)
+        {
+            if (pools.ContainsKey(gameObject.name))
+            {
+                pools[gameObject.name].Return(gameObject);
+            }
         }
     }
 }

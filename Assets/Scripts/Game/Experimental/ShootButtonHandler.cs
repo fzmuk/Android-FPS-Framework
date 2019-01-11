@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts;
 using Assets.Scripts.Framework.Experimental;
+using Pool;
 
 namespace Assets.Scripts.Game.Experimental
 {
@@ -13,7 +14,7 @@ namespace Assets.Scripts.Game.Experimental
         protected IShootButtonFramework frameworkButtonHandler;
         protected IBallisticFramework ballistics;
         protected IBallisticCalculation calculation;
-        protected GameObject dummyProjectile;
+        protected GameObject bullet;
         public WeaponHandler weaponHandler;
 
         
@@ -58,10 +59,16 @@ namespace Assets.Scripts.Game.Experimental
                 Transform transform = weaponHandler.getWeaponTransform();
                 if (ballistics != null)
                 {
+                    PoolMenager poolManager = PoolMenager.Instance;
+                    bullet = poolManager.GetFromPool("Bullet");
+                    bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
+                    bullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+
                     //temporaly 
-                    dummyProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    dummyProjectile.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
-                    dummyProjectile.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    //dummyProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    //dummyProjectile.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
+                    //dummyProjectile.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
                     double gamescale = 0.05;
 
@@ -69,7 +76,7 @@ namespace Assets.Scripts.Game.Experimental
                     //ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(), 600.0);
 
                     calculation = new BallisticCalcGrenade(0.3, 9.81, 0.7, 1.23, 0.0025, gamescale); //m, g, Cx, ro, A
-                    ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(),20.0);
+                    ballistics.Init(bullet, calculation, weaponHandler.getWeaponTransform(),20.0);
                 }
             }
         }

@@ -1673,6 +1673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 312901010}
   - component: {fileID: 312901009}
+  - component: {fileID: 312901011}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1704,6 +1705,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &312901011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 312901008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ebccc5534a50d4aa9f9a8cc88ae086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 1415715483003396, guid: c9e619a669d974fd28b5c89e43f2bce2,
+    type: 2}
 --- !u!1001 &313034481
 Prefab:
   m_ObjectHideFlags: 0
@@ -1938,34 +1952,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a0bd7523e1445f147886c60f88830141,
     type: 3}
   m_PrefabInternal: {fileID: 322988167}
---- !u!1 &338119567
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 338119568}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &338119568
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 338119567}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.05954, y: 31.324453, z: 97.43294}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &338531308
 Prefab:
   m_ObjectHideFlags: 0
@@ -11012,7 +10998,7 @@ Transform:
   m_Children:
   - {fileID: 1691675347}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 4.011, y: 53.041004, z: 0}
 --- !u!114 &1886716430
 MonoBehaviour:
@@ -11929,7 +11915,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413756, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}

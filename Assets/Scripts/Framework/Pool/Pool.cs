@@ -5,52 +5,59 @@ using UnityEngine;
 
 namespace Pool
 {
-    public class Pool<T> where T : Poolable
+    public class Pool: IPool<GameObject>
     {
-        protected List<T> allItems;
+        public GameObject Prefab;
 
-        protected List<T> availableItems;
+        public int InitialSize = 10;
 
-        protected Func<T> factory;
+        protected List<GameObject> allItems;
 
-        public Pool()
+        protected List<GameObject> availableItems;
+
+        public Pool(GameObject prefab)
         {
-            this.factory = SimpleFactory;
-            this.availableItems = new List<T>();
-            this.allItems = new List<T>();
+            Prefab = prefab;
+            availableItems = new List<GameObject>();
+            allItems = new List<GameObject>();
+            Grow(InitialSize);
         }
 
-        public Pool (Func<T> factory) {
-            this.factory = factory;
-            this.availableItems = new List<T>();
-            this.allItems = new List<T>();
+        public Pool(GameObject prefab, int initialSize)
+        {
+            Prefab = prefab;
+            availableItems = new List<GameObject>();
+            allItems = new List<GameObject>();
+            Grow(initialSize);
         }
 
-        private void Add(T item)
+        private void Add(GameObject gameObject)
         {
-            // item.Pool = this;
-            this.allItems.Add(item);
-            this.availableItems.Add(item);
-        }
-
-        public void Return(T item)
-        {
-            if(this.Contains(item) && !this.availableItems.Contains(item))
+            if(!Contains(gameObject))
             {
-                item.gameObject.SetActive(false);
-                this.availableItems.Add(item);
+                allItems.Add(gameObject);
+                availableItems.Add(gameObject);
+            }
+
+        }
+
+        public void Return(GameObject poolItem)
+        {
+            if(Contains(poolItem) && !availableItems.Contains(poolItem))
+            {
+                poolItem.gameObject.SetActive(false);
+                this.availableItems.Add(poolItem);
             }
         }
 
-        public T Get() 
+        public GameObject Get() 
         {
-            if (this.availableItems.Count == 0)
+            if (availableItems.Count == 0)
             {
                 Grow(1);
             }
 
-            T poolItem = this.availableItems[0];
-            poolItem.Reset();
+            GameObject poolItem = this.availableItems[0];
             poolItem.gameObject.SetActive(true);
             this.availableItems.RemoveAt(0);
             return poolItem;
@@ -60,20 +67,20 @@ namespace Pool
         {
             for (int i = 0; i < amount; i++)
             {
-                T newItem = this.factory();
-                newItem.Initialize();
-                this.Add(newItem);
+                this.Add(Factory());
             }
         }
 
-        public bool Contains(T item)
+        public bool Contains(GameObject gameObject)
         {
-            return this.allItems.Contains(item);
+            return allItems.Contains(gameObject);
         }
 
-        private T SimpleFactory()
+        private GameObject Factory()
         {
-            return default(T);
+            GameObject poolItem = GameObject.Instantiate(Prefab);
+            poolItem.SetActive(false);
+            return poolItem;
         }
     }
 }
