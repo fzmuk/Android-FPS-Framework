@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Pool
 {
-    public abstract class Poolable
+    public abstract class Poolable : MonoBehaviour
     {
-        protected int poolInitialSize = 1;
+        protected int poolInitialSize = 10;
 
-        public Pool<Poolable> Pool { get; set; }
+        //public Pool<Poolable> Pool { get; set; }
 
-        public abstract void Reset();
+        public virtual void Initialize() { }
 
-        public abstract void Initialize();
-
+        public virtual void Reset() { }
     }
 }

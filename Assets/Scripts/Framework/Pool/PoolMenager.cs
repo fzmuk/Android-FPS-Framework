@@ -7,13 +7,14 @@ namespace Pool
 {
     public class PoolMenager
     {
-        public List<Poolable> poolables;
+        public List<Type> poolables;
 
-        private Dictionary<Poolable, Pool<Poolable>> pools;
+        private Dictionary<Type, Pool<Poolable>> pools;
 
         private PoolMenager instance = null;
 
-        public PoolMenager Instance { get
+        public PoolMenager Instance {
+            get
             {
                 if (instance == null)
                 {
@@ -25,18 +26,21 @@ namespace Pool
 
         private PoolMenager()
         {
-            this.poolables = new List<Poolable>();
-            this.pools = new Dictionary<Poolable, Pool<Poolable>>();
+            this.poolables = new List<Type>();
+            this.pools = new Dictionary<Type, Pool<Poolable>>();
         }
 
-        private Poolable GetPoolable(Poolable prefab)
+
+        
+        private Poolable GetPoolable<T>() where T: Poolable
         {
-            if(!poolables.Contains(prefab))
+            if(!poolables.Contains(typeof(T)))
             {
-                this.pools.Add(prefab, new Pool<Poolable>());
+                poolables.Add(typeof(T));
+                pools.Add(typeof(T), new Pool<Poolable>());
             }
 
-            return this.pools[prefab].Get();
+            return this.pools[typeof(T)].Get();
         }
 
         private void Return(Poolable item)

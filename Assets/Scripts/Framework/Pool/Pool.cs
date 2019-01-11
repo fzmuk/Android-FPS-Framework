@@ -7,32 +7,28 @@ namespace Pool
 {
     public class Pool<T> where T : Poolable
     {
-        //all items in pool
         protected List<T> allItems;
 
         protected List<T> availableItems;
 
         protected Func<T> factory;
 
-        public Pool () : this(null) {}
-
-        public Pool(Func<T> factory)
+        public Pool()
         {
-            if (factory != null)
-            {
-                this.factory = factory;
-            }
-            else
-            {
-                this.factory = SimpleFactory;
-            }
-
+            this.factory = SimpleFactory;
             this.availableItems = new List<T>();
             this.allItems = new List<T>();
         }
 
-        public void Add(T item)
+        public Pool (Func<T> factory) {
+            this.factory = factory;
+            this.availableItems = new List<T>();
+            this.allItems = new List<T>();
+        }
+
+        private void Add(T item)
         {
+            // item.Pool = this;
             this.allItems.Add(item);
             this.availableItems.Add(item);
         }
@@ -41,22 +37,23 @@ namespace Pool
         {
             if(this.Contains(item) && !this.availableItems.Contains(item))
             {
+                item.gameObject.SetActive(false);
                 this.availableItems.Add(item);
             }
         }
 
         public T Get() 
         {
-            if(this.availableItems.Count > 0)
+            if (this.availableItems.Count == 0)
             {
-                T poolItem = this.availableItems[0];
-                poolItem.Reset();
-                this.availableItems.RemoveAt(0);
-                return poolItem;
+                Grow(1);
             }
 
-            Grow(1);
-            return this.Get();
+            T poolItem = this.availableItems[0];
+            poolItem.Reset();
+            poolItem.gameObject.SetActive(true);
+            this.availableItems.RemoveAt(0);
+            return poolItem;
         }
 
         public void Grow(int amount)
