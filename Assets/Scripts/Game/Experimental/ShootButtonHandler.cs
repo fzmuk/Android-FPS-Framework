@@ -62,8 +62,6 @@ namespace Assets.Scripts.Game.Experimental
                 {                    
                     bullet = poolManager.GetFromPool("Bullet");
                     bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
-                    bullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-
 
                     //temporaly 
                     //dummyProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);

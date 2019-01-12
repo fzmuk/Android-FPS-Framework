@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Pool
 {
-    public class Pool: IPool<GameObject>
+    public class GameObjectPool: IPool<GameObject>
     {
         public GameObject Prefab;
 
@@ -15,7 +15,7 @@ namespace Pool
 
         protected List<GameObject> availableItems;
 
-        public Pool(GameObject prefab)
+        public GameObjectPool(GameObject prefab)
         {
             Prefab = prefab;
             availableItems = new List<GameObject>();
@@ -23,7 +23,7 @@ namespace Pool
             Grow(InitialSize);
         }
 
-        public Pool(GameObject prefab, int initialSize)
+        public GameObjectPool(GameObject prefab, int initialSize)
         {
             Prefab = prefab;
             availableItems = new List<GameObject>();
@@ -43,10 +43,8 @@ namespace Pool
 
         public void Return(GameObject poolItem)
         {
-            //Debug.Log("RADI"); ne radi
             if (Contains(poolItem) && !availableItems.Contains(poolItem))
             {
-                //Debug.Log("RADI"); ne radi
                 poolItem.gameObject.SetActive(false);
                 this.availableItems.Add(poolItem);
             }
@@ -81,6 +79,7 @@ namespace Pool
         private GameObject Factory()
         {
             GameObject poolItem = GameObject.Instantiate(Prefab);
+            poolItem.name = Prefab.name;
             poolItem.SetActive(false);
             return poolItem;
         }

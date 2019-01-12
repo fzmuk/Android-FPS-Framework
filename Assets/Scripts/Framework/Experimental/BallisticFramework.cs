@@ -75,7 +75,7 @@ namespace Assets.Scripts.Framework.Experimental
             // Debug.Log("Seconds elapsed: " + seconds+", posX: "+position);
             calculation.Calculate(ref x, ref y, ref vx, ref vy, seconds);
 
-            Debug.Log("Ballistic position: x: " + x + ", y: " + y);
+            //Debug.Log("Ballistic position: x: " + x + ", y: " + y);
 
             //  right coordinate systems
             //  x ballistics -> z scene direction 
