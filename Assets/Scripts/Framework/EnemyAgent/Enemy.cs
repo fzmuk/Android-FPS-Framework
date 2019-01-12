@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Enemy
+namespace EnemyAgent
 {
     public class Enemy
     {
@@ -17,7 +17,7 @@ namespace Enemy
             Agent = agent;
         }
 
-        public float StopingDistance
+        public float StoppingDistance
         {
             get
             {

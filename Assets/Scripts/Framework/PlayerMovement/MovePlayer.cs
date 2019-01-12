@@ -27,7 +27,7 @@ namespace PlayerMovement
             {
                 moveVector = new Vector3(inputVector.x, 0, inputVector.y);
           
-                agent.Move(agent.transform.TransformDirection(moveVector) * (agent.speed / slow));
+                agent.Move(agent.transform.TransformDirection(moveVector) * (agent.speed / slow)); //TODO 
                 
             }
                  

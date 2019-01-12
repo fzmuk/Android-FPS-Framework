@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Assets.Scripts;
 using Assets.Scripts.Framework.Experimental;
 using Pool;
+using System.Collections;
 
 namespace Assets.Scripts.Game.Experimental
 {
@@ -16,8 +17,8 @@ namespace Assets.Scripts.Game.Experimental
         protected IBallisticCalculation calculation;
         protected GameObject bullet;
         public WeaponHandler weaponHandler;
-
         
+        PoolMenager poolManager = PoolMenager.Instance;
 
         void Start()
         {
@@ -58,8 +59,7 @@ namespace Assets.Scripts.Game.Experimental
             {
                 Transform transform = weaponHandler.getWeaponTransform();
                 if (ballistics != null)
-                {
-                    PoolMenager poolManager = PoolMenager.Instance;
+                {                    
                     bullet = poolManager.GetFromPool("Bullet");
                     bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
                     bullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
@@ -70,15 +70,23 @@ namespace Assets.Scripts.Game.Experimental
                     //dummyProjectile.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
                     //dummyProjectile.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-                    double gamescale = 0.05;
+                    double gamescale = 0.05; 
 
                     //calculation = new BallisticCalcBullet(0.01, 9.81, 0.5, 1.23 / gamescale, 0.0001, gamescale); //m, g, Cx, ro, A
                     //ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(), 600.0);
 
                     calculation = new BallisticCalcGrenade(0.3, 9.81, 0.7, 1.23, 0.0025, gamescale); //m, g, Cx, ro, A
                     ballistics.Init(bullet, calculation, weaponHandler.getWeaponTransform(),20.0);
+
+                    StartCoroutine(DeleteBullet(bullet));
                 }
             }
+        }
+
+        IEnumerator DeleteBullet(GameObject bullet)
+        {
+            yield return new WaitForSeconds(3);
+            poolManager.ReturnToPool(bullet);
         }
 
         public void Pressed()
