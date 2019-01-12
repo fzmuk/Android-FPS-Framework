@@ -63,8 +63,10 @@ namespace Pool
 
         public void ReturnToPool(GameObject gameObject)
         {
+            //Debug.Log("RADI"); radi
             if (pools.ContainsKey(gameObject.name))
             {
+                //Debug.Log("NE RADI");
                 pools[gameObject.name].Return(gameObject);
             }
         }

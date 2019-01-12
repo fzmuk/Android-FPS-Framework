@@ -43,8 +43,10 @@ namespace Pool
 
         public void Return(GameObject poolItem)
         {
-            if(Contains(poolItem) && !availableItems.Contains(poolItem))
+            //Debug.Log("RADI"); ne radi
+            if (Contains(poolItem) && !availableItems.Contains(poolItem))
             {
+                //Debug.Log("RADI"); ne radi
                 poolItem.gameObject.SetActive(false);
                 this.availableItems.Add(poolItem);
             }
