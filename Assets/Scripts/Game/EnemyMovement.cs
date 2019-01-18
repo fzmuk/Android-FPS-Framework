@@ -23,7 +23,6 @@ public class EnemyMovement : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
 
         enemy = gameObject.GetComponent<EnemyStats>().Enemy;
-        //enemy = new Enemy(agent);
         enemyAct = new EnemyActions(enemy);
 
         s_animation.Play("idle_gunMiddle_ar");

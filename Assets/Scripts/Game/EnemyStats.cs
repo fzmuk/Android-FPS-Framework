@@ -43,7 +43,7 @@ public class EnemyStats : MonoBehaviour {
 
             if (Enemy.Health <= 0) Die();
 
-            //poolManager.ReturnToPool(col.gameObject);
+            poolManager.ReturnToPool(col.gameObject);
         }
     }
 
