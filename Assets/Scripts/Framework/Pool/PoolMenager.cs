@@ -9,7 +9,7 @@ namespace Pool
 {
     public class PoolMenager
     {
-        private Dictionary<String, Pool> pools;
+        private Dictionary<String, IPool<GameObject>> pools;
 
         private static PoolMenager instance = null;
 
@@ -27,19 +27,19 @@ namespace Pool
         public PoolMenager()
         {
             //this.poolables = new List<Type>();
-            pools = new Dictionary<String, Pool>();
+            pools = new Dictionary<String, IPool<GameObject>>();
         }
 
-        public Pool CreatePool(GameObject prefab)
+        public IPool<GameObject> CreatePool(GameObject prefab)
         {
-            Pool pool = new Pool(prefab);
+            IPool<GameObject> pool = new GameObjectPool(prefab);
             pools.Add(prefab.name, pool);
             return pool;
         }
 
-        public Pool CreatePool(GameObject prefab, int poolSize)
+        public IPool<GameObject> CreatePool(GameObject prefab, int poolSize)
         {
-            Pool pool = new Pool(prefab, poolSize);
+            IPool<GameObject> pool = new GameObjectPool(prefab, poolSize);
             pools.Add(prefab.name, pool);
             return pool;
         }
@@ -63,10 +63,8 @@ namespace Pool
 
         public void ReturnToPool(GameObject gameObject)
         {
-            //Debug.Log("RADI"); radi
             if (pools.ContainsKey(gameObject.name))
             {
-                //Debug.Log("NE RADI");
                 pools[gameObject.name].Return(gameObject);
             }
         }
