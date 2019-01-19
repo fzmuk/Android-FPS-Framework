@@ -13,13 +13,11 @@ namespace Assets.Scripts.Game.Experimental
     internal class ShootButtonHandler : MonoBehaviour, Buttons.IButtonHandler
     {
         protected IShootButtonFramework frameworkButtonHandler;
-        protected IBallisticFramework ballistics;
-        protected IBallisticCalculation calculation;
         protected GameObject bullet;
         private Transform weaponTransform;
 
         public WeaponHandler weaponHandler;
-        
+
         PoolMenager poolManager = PoolMenager.Instance;
 
         void Start()
@@ -28,16 +26,11 @@ namespace Assets.Scripts.Game.Experimental
             button.onClick.AddListener(Click);
 
             frameworkButtonHandler = new ShootButtonFramework();
-            weaponHandler = GameObject.Find("FPS_Character_prefab").GetComponentInChildren<WeaponHandler>() as WeaponHandler; 
+            weaponHandler = GameObject.Find("FPS_Character_prefab").GetComponentInChildren<WeaponHandler>() as WeaponHandler;
             weaponTransform = weaponHandler.getWeaponTransform();
 
-            ballistics = new BallisticFramework();
         }
-        //updated for each frame
-        void Update()
-        {
-            ballistics.OnUpdate();
-        }
+
         //calls for button click
         public void Click()
         {
@@ -45,25 +38,17 @@ namespace Assets.Scripts.Game.Experimental
             {
                 frameworkButtonHandler.OnClick();
             }
-          
-            if(weaponHandler != null)
-            {
-                if (ballistics != null)
-                {                    
-                    bullet = poolManager.GetFromPool("Bullet"); 
-                    bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
-                    bullet.GetComponent<BulletBallistics>().Init(weaponTransform); 
 
-                    StartCoroutine(DeleteBullet(bullet)); 
-                }
+            if (weaponHandler != null)
+            {
+
+                bullet = poolManager.GetFromPool("Bullet");
+                bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
+                bullet.GetComponent<BulletBallistics>().Init(weaponTransform, poolManager);
+
             }
         }
 
-        IEnumerator DeleteBullet(GameObject bullet)
-        {
-            yield return new WaitForSeconds(3);
-            poolManager.ReturnToPool(bullet);
-        }
 
         public void Pressed()
         {

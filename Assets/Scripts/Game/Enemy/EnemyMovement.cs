@@ -84,15 +84,6 @@ public class EnemyMovement : MonoBehaviour {
     {
         bullet = poolManager.GetFromPool("Bullet");
         bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
-        bullet.GetComponent<BulletBallistics>().Init(weaponTransform);
-
-        StartCoroutine(DeleteBullet(bullet));
+        bullet.GetComponent<BulletBallistics>().Init(weaponTransform, poolManager);
     }
-
-    IEnumerator DeleteBullet(GameObject bullet)
-    {
-        yield return new WaitForSeconds(3);
-        poolManager.ReturnToPool(bullet);
-    }
-
 }

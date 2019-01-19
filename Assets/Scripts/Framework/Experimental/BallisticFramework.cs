@@ -63,6 +63,10 @@ namespace Assets.Scripts.Framework.Experimental
             //Debug.Log("Ballistic: shot at elevation " + elevation + " radians in azimuthal direction of " + azimuth + " radians starting from x: " + x + ", y: " + y);
         }
 
+
+        /* 
+            Update on each frame
+         */
         public void OnUpdate()
         {
             double x1, y1, z1;
@@ -99,6 +103,8 @@ namespace Assets.Scripts.Framework.Experimental
             
             //Debug.Log("Projectile position: x: " + position.x + ", y: " + position.y + ", z: " + position.z);
         }
+
+
 
     }
 }
