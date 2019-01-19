@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 using System.Linq;
 using System.Text;
 
@@ -15,17 +16,21 @@ namespace Assets.Scripts.Framework.Experimental
 
         //physical variables
         protected double g;
-        protected double m, Cv, ro, A, D;
+        protected double m, Cv, ro, A, D, nu, r, v;
+        protected double Re; //reynolds number
+        protected double D_over_m;
         protected double gamescale;
 
         public BallisticCalculation()
         {
             g = 9.81;
-            m = 0.02;
+            m = 0.03;
             Cv = 0.5;
             ro = 1.23;
-            A = 0.0001;
+            r = 0.008;
+            A = r * r * Math.PI;
             D = 0.5 * Cv * ro * A;
+            nu = 0.0000182; //kinematic viscosity of air at 20 deg C 
             gamescale = 1.0;
         }
 
@@ -57,6 +62,11 @@ namespace Assets.Scripts.Framework.Experimental
         {
             double sixth = 1.0 / 6.0;
             double k1, k2, k3, k4;
+
+            v = Math.Sqrt(vx * vx + vy * vy);
+            Re = 2.0 * v * r / nu; //Reynolds' number
+
+            D_over_m = D / m;
 
             k1 = h * DynamicsX(vx);
             k2 = h * DynamicsX(vx + k1 * 0.5);
