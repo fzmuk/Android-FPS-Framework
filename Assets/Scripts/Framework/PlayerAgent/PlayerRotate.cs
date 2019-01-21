@@ -4,7 +4,7 @@ using UnityEngine;
 using DisplacementDetection;
 using Helpers;
 
-namespace PlayerMovement
+namespace PlayerAgent
 {
     public class PlayerRotate
     {
