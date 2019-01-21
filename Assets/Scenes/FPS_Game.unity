@@ -2394,7 +2394,10 @@ Prefab:
       propertyPath: ArProgressBar
       value: 
       objectReference: {fileID: 320482574}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114625374277005730, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+    - {fileID: 114325155897860950, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+    - {fileID: 136117567162518910, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &546401894
@@ -3760,6 +3763,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4618663575428644, guid: dbaa58657db866140b989ca4a0fc01c2,
     type: 2}
   m_PrefabInternal: {fileID: 926644746}
+--- !u!1 &942854645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1790744367289860, guid: 13c46916fa552fb4e846d566e8b3a073,
+    type: 2}
+  m_PrefabInternal: {fileID: 519632582}
+--- !u!136 &942854647
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942854645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: -0.1}
+--- !u!114 &942854648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942854645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf9813f687d30648a78e4ec62271231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HpProgressBar: {fileID: 24370979}
+  ArProgressBar: {fileID: 320482574}
+--- !u!114 &942854649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942854645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06f5fbb559db89418c2861dd50c0884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JoystickControl: {fileID: 1924937771}
 --- !u!1001 &953434905
 Prefab:
   m_ObjectHideFlags: 0

@@ -27,37 +27,25 @@ public class BulletBallistics : MonoBehaviour
     {
         this.poolManager = poolManager;
 
-        IBallisticCalculation calculation = new BallisticCalcGrenade(0.3, 9.81, 0.7, 1.23, 0.0025, gamescale); //m, g, Cx, ro, A
+        IBallisticCalculation calculation = new BallisticCalcBullet(0.3, 9.81, 0.7, 1.23, 0.0025, gamescale); //m, g, Cx, ro, A
         IBallisticGauge gauge = new BallisticGauge();
 
         ballistics.Init(gameObject, calculation, weaponTransform, speed);
 
-        //gauge test1
-        if (gauge != null)
-        {
-            calculation = new BallisticCalcBullet(0.03, 9.81, 0.5, 1.23 / gamescale, 0.00006, gamescale); //m, g, Cx, ro, A
-            gauge.Init(null, calculation, weaponTransform, 600.0);
 
-            double range = gauge.CalculateRange();
+        gauge.Init(null, calculation, weaponTransform, 600.0);
 
-            double elevation = 360.0f - weaponTransform.eulerAngles.x;
-            if (elevation > 180.0f)
-                elevation -= 360.0f;
-            Debug.Log("Projectile range: " + range);
 
-            StartCoroutine(ReturnToPool((float)(range / speed)));
-        }
+        double range = gauge.CalculateRange();
 
-        //gauge test2
-        if (gauge != null)
-        {
-            calculation = new BallisticCalcBullet(0.03, 9.81, 0.5, 1.23 / gamescale, 0.00006, gamescale); //m, g, Cx, ro, A
-            gauge.Init(calculation, 600.0, 45.0);
+        double elevation = 360.0f - weaponTransform.eulerAngles.x;
+        if (elevation > 180.0f)
+            elevation -= 360.0f;
+        Debug.Log("Projectile range: " + range);
 
-            double elevation = 0.0;
-            double range = gauge.CalculateMaximumRange(ref elevation);
-            Debug.Log("Projectile max. range: " + range);
-        }        
+        if (range < 50f) range = 50f; //hack: if weopn angle is <0 range is ~0
+
+        StartCoroutine(ReturnToPool((float)(range / speed)));        
     }
 
             
