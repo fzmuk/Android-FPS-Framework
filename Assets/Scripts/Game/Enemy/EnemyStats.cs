@@ -33,7 +33,7 @@ public class EnemyStats : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Bullet(Clone)")
+        if (col.gameObject.name == "Bullet")
         {
             var hp = Enemy.ChangeHealth(-20f);
             if (hp * 100 <= 66) 

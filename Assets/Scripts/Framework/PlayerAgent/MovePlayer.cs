@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 using DisplacementDetection;
 
-namespace PlayerMovement
+namespace PlayerAgent
 {
     public class MovePlayer
     {
 
-        private GameObject player;
-        private IDisplacement displacementInput;  
+        //private GameObject player;
+        private IDisplacement displacementInput;
 
-        public MovePlayer (GameObject player, IDisplacement displacementInput)
+        Player player;
+
+
+        public MovePlayer(Player player, IDisplacement displacementInput)
         {
             this.player = player;
             this.displacementInput = displacementInput;
@@ -19,7 +21,7 @@ namespace PlayerMovement
         public void PlayerMove(int slow)
         {
             var inputVector = displacementInput.Shift;
-            var agent = player.GetComponent<NavMeshAgent>();
+            var agent = player.Agent;
             Vector3 moveVector;
 
 

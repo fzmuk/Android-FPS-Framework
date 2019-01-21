@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace EnemyAgent
 {
@@ -9,19 +8,24 @@ namespace EnemyAgent
     {
         Enemy EnemyMove;
 
+
         public EnemyActions(Enemy enemy) {
             EnemyMove = enemy;
         }
 
         public bool Follow(GameObject oponent)
         {
-            if (EnemyMove.Agent.remainingDistance != EnemyMove.Agent.stoppingDistance || EnemyMove.Agent.isPathStale) //fix
-            {
-                EnemyMove.Agent.SetDestination(oponent.transform.position);
-                return true;
-            }
+            EnemyMove.Agent.SetDestination(oponent.transform.position);
 
-            return false;                  
+            if (EnemyMove.Agent.isPathStale) EnemyMove.Agent.SetDestination(oponent.transform.position);
+
+            return true;            
+        }
+
+        public bool Stop()
+        {
+            EnemyMove.Agent.ResetPath();
+            return false;
         }
 
         public void LookAtPlayer(GameObject oponent, float RotationSpeed)

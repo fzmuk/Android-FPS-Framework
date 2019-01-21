@@ -69,11 +69,11 @@ namespace EnemyAgent
 
         private float startHealth = -Mathf.Infinity;
 
-        public float ChangeHealth(float AmountToChange)
+        public float ChangeHealth(float amountToChange)
         {
             if (startHealth == -Mathf.Infinity) startHealth = Health;
 
-            Health += AmountToChange;
+            Health += amountToChange;
             if (Health >= startHealth) return 1;
 
             return Health / startHealth;
