@@ -5,36 +5,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts;
 using Assets.Scripts.Framework.Experimental;
+using Pool;
+using System.Collections;
 
 namespace Assets.Scripts.Game.Experimental
 {
     internal class ShootButtonHandler : MonoBehaviour, Buttons.IButtonHandler
     {
         protected IShootButtonFramework frameworkButtonHandler;
-        protected IBallisticFramework ballistics;
-        protected IBallisticCalculation calculation;
-        protected GameObject dummyProjectile;
+        protected GameObject bullet;
+        private Transform weaponTransform;
+
         public WeaponHandler weaponHandler;
 
-        
+        PoolMenager poolManager = PoolMenager.Instance;
 
         void Start()
         {
-            //game object needs MonoBehaviour class, Button needs Buttons namespace
-            //Start() is method in MonoBehaviour
             Button button = gameObject.GetComponent<Button>();
             button.onClick.AddListener(Click);
 
             frameworkButtonHandler = new ShootButtonFramework();
-            weaponHandler = GameObject.FindObjectOfType(typeof(WeaponHandler)) as WeaponHandler;
+            weaponHandler = GameObject.Find("FPS_Character_prefab").GetComponentInChildren<WeaponHandler>() as WeaponHandler;
+            weaponTransform = weaponHandler.getWeaponTransform();
 
-            ballistics = new BallisticFramework();
         }
-        //updated for each frame
-        void Update()
-        {
-            ballistics.OnUpdate(); 
-        }
+
         //calls for button click
         public void Click()
         {
@@ -42,37 +38,17 @@ namespace Assets.Scripts.Game.Experimental
             {
                 frameworkButtonHandler.OnClick();
             }
-          
-            /*
-            if (weaponHandler!=null)
+
+            if (weaponHandler != null)
             {
-                float elevation = weaponHandler.GetWeaponElevation();
-                float azimuth = weaponHandler.GetWeaponAzimuth();
-                Vector3 position = weaponHandler.GetWeaponPosition();
-                if (ballistics != null)
-                    ballistics.Init(azimuth,elevation,position);
-            } 
-            */
-            if(weaponHandler != null)
-            {
-                Transform transform = weaponHandler.getWeaponTransform();
-                if (ballistics != null)
-                {
-                    //temporaly 
-                    dummyProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    dummyProjectile.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
-                    dummyProjectile.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-                    double gamescale = 0.05;
+                bullet = poolManager.GetFromPool("Bullet");
+                bullet.transform.SetPositionAndRotation(weaponHandler.getWeaponTransform().position, weaponHandler.getWeaponTransform().rotation);
+                bullet.GetComponent<BulletBallistics>().Init(weaponTransform, poolManager);
 
-                    //calculation = new BallisticCalcBullet(0.01, 9.81, 0.5, 1.23 / gamescale, 0.0001, gamescale); //m, g, Cx, ro, A
-                    //ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(), 600.0);
-
-                    calculation = new BallisticCalcGrenade(0.3, 9.81, 0.7, 1.23, 0.0025, gamescale); //m, g, Cx, ro, A
-                    ballistics.Init(dummyProjectile, calculation, weaponHandler.getWeaponTransform(),20.0);
-                }
             }
         }
+
 
         public void Pressed()
         {

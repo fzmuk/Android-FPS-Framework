@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
-namespace Enemy
+namespace EnemyAgent
 {
-    public class Enemy
+    public class Enemy: IEnemy
     {
-        private float detectionDistance;
-        private float range;
+        public float DetectionDistance;
+        public float Range; //problem
+        public float Health;
 
-        public NavMeshAgent Agent;        
+        public NavMeshAgent Agent;
 
         public Enemy(NavMeshAgent agent)
         {
             Agent = agent;
         }
 
-        public float StopingDistance
+        public float StoppingDistance
         {
             get
             {
@@ -53,20 +55,6 @@ namespace Enemy
             }
         }
 
-        public float DetectionDistance
-        {
-            get
-            {
-                return detectionDistance;
-            }
-            set
-            {
-                detectionDistance = value;
-            }
-        }
-        //health, armor
-        public float Range;
-
         public GameObject FindOponentByName(string name)
         {
             GameObject oponent = GameObject.Find(name);
@@ -76,6 +64,19 @@ namespace Enemy
         {
             GameObject oponent = GameObject.FindGameObjectWithTag(tag);
             return oponent;
+        }
+
+
+        private float startHealth = -Mathf.Infinity;
+
+        public float ChangeHealth(float amountToChange)
+        {
+            if (startHealth == -Mathf.Infinity) startHealth = Health;
+
+            Health += amountToChange;
+            if (Health >= startHealth) return 1;
+
+            return Health / startHealth;
         }
 
     }

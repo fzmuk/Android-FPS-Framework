@@ -63,6 +63,10 @@ namespace Assets.Scripts.Framework.Experimental
             //Debug.Log("Ballistic: shot at elevation " + elevation + " radians in azimuthal direction of " + azimuth + " radians starting from x: " + x + ", y: " + y);
         }
 
+
+        /* 
+            Update on each frame
+         */
         public void OnUpdate()
         {
             double x1, y1, z1;
@@ -75,7 +79,7 @@ namespace Assets.Scripts.Framework.Experimental
             // Debug.Log("Seconds elapsed: " + seconds+", posX: "+position);
             calculation.Calculate(ref x, ref y, ref vx, ref vy, seconds);
 
-            Debug.Log("Ballistic position: x: " + x + ", y: " + y);
+            //Debug.Log("Ballistic position: x: " + x + ", y: " + y);
 
             //  right coordinate systems
             //  x ballistics -> z scene direction 
@@ -99,6 +103,8 @@ namespace Assets.Scripts.Framework.Experimental
             
             //Debug.Log("Projectile position: x: " + position.x + ", y: " + position.y + ", z: " + position.z);
         }
+
+
 
     }
 }

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DisplacementDetection;
-using PlayerMovement;
+using PlayerAgent;
 
 public class PlayerRotate : MonoBehaviour {
     public GameObject player;
     public GameObject playerHands;
 
-    private PlayerMovement.PlayerRotate playerRotate;
+    private PlayerAgent.PlayerRotate playerRotate;
 
 	void Start () {
         IDisplacement swipeDetection = player.AddComponent<SwipeDetection>();
-        playerRotate = new PlayerMovement.PlayerRotate(swipeDetection, playerHands, player);
+        playerRotate = new PlayerAgent.PlayerRotate(swipeDetection, playerHands, player);
 	}
 
     void Update ()
