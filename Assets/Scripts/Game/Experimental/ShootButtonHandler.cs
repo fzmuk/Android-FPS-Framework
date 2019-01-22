@@ -96,7 +96,7 @@ namespace Assets.Scripts.Game.Experimental
                     double elevation = 360.0f - weaponHandler.getWeaponTransform().eulerAngles.x;
                     if (elevation > 180.0f)
                         elevation -= 360.0f;
-                    Debug.Log("Projectile range: " + range);
+                    Debug.Log("Projectile range: " + range+ ", at elevation: "+ elevation);
                 }
 
                 //gauge test2
@@ -104,7 +104,7 @@ namespace Assets.Scripts.Game.Experimental
                 {
                     double gamescale = 0.05;
                     calculation = new BallisticCalcBullet(0.03, 9.81, 0.5, 1.23 / gamescale, 0.00006, gamescale); //m, g, Cx, ro, A
-                    gauge.Init(calculation, 600.0,45.0);
+                    gauge.Init(calculation, 600.0, weaponHandler.getWeaponTransform().position.y, 45.0);
 
                     //calculation = new BallisticCalcGrenade(0.3, 9.81, 0.7, 1.23, 0.0025, gamescale); //m, g, Cx, ro, A
                     //gauge.Init(calculation, 20.0, 45.0);

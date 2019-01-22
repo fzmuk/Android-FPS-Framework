@@ -12,18 +12,22 @@ namespace Assets.Scripts.Framework.Experimental
     {
         protected IBallisticCalculation calculation;
         protected double azimuth, elevation;
-        Vector3 position;
+        Vector2 position;
         double vx, vy, speed;
         public BallisticGauge()
         {
             azimuth = 0.0f;
             elevation = 0.0f;
-            position = new Vector3(0.0f, 0.0f, 0.0f);
+            position = new Vector2(0.0f, 0.0f);
         }
 
         public void Init(IBallisticCalculation calculation, double speed, double elevation)
         {
-            Init(null, calculation, 0.0, elevation, new Vector3(0.0f, 0.0f), speed);
+            Init(null, calculation, 0.0, elevation, new Vector2(0.0f, 0.0f), speed);
+        }
+        public void Init(IBallisticCalculation calculation, double speed, double height, double elevation)
+        {
+            Init(null, calculation, 0.0, elevation, new Vector2(0.0f, (float)height), speed);
         }
 
         //due to interface compatibility
@@ -33,8 +37,9 @@ namespace Assets.Scripts.Framework.Experimental
             if (elevation > 180.0f)
                 elevation -= 360.0f;
             elevation *= Mathf.Deg2Rad;
-            Init(projectile, calculation, 0.0, elevation, position, speed);
+            Init(projectile, calculation, 0.0, elevation, new Vector2(0.0f, transform.position.y), speed);
         }
+
         //due to interface compatibility
         public void Init(GameObject projectile, IBallisticCalculation calculation, double azimuth, double elevation, Vector3 position, double speed)
         {
@@ -43,6 +48,7 @@ namespace Assets.Scripts.Framework.Experimental
             //don't care about azimuth
             double gamescale = calculation.GetGamescale();
             this.speed = speed*gamescale;
+            this.position.y = position.y;
             vx = this.speed * Math.Cos(elevation); //projectile initial conditions
             vy = this.speed * Math.Sin(elevation); //projectile initial conditions
         }
@@ -60,7 +66,7 @@ namespace Assets.Scripts.Framework.Experimental
             local_vx = vx;
             local_vy = vy;
             local_x = 0.0;
-            local_y = 0.001;
+            local_y = this.position.y;
             do
             {
                 if (local_vy >= 0.0) //ascending
