@@ -29,35 +29,31 @@ namespace Pool
         public void GenerateRandomList(int size)
         {
             for (int i = 0; i < size; i++)
-            {
-                int numToAdd = Random.Range(0, size);
-                while (randomList.Contains(numToAdd))
-                {
-                    numToAdd = Random.Range(0, size);
-                }
-                randomList.Add(numToAdd);
-            }
+                randomList.Add(i);
 
-            for (int i = 0; i < size; i++)
+            for (var i = 0; i < randomList.Count; i++)
             {
-                Debug.Log(randomList[i]);
+                int tmp = randomList[i];
+                int random = Random.Range(i, randomList.Count);
+                randomList[i] = randomList[random];
+                randomList[random] = tmp;
             }
+            
         }
 
         public void SetCrates()
         {
-            //randNumberOfCrates = Random.Range(0, CrateList.Length);
-            randNumberOfCrates = 3;
+            randNumberOfCrates = Random.Range(0, CrateList.Length);
 
-            GenerateRandomList(randNumberOfCrates);
-            /*
-            for (int i = 0; i < CrateList.Length; i++)
+            GenerateRandomList(CrateList.Length);
+            
+            /*for (int i = 0; i < CrateList.Length; i++)
             {
                 crate = CrateList[i];
                 crate.SetActive(false);
                 CrateList[i] = crate;
             }
-            Debug.Log("sve na false");
+            Debug.Log(randNumberOfCrates);
 
             for (int i = 0; i < randNumberOfCrates; i++)
             {
