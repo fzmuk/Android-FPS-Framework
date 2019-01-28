@@ -49,7 +49,6 @@ namespace Assets.Scripts.Game.Experimental
             }
         }
 
-
         public void Pressed()
         {
             throw new NotImplementedException();
