@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent = gameObject.GetComponentInParent<NavMeshAgent>();
         Player = new Player(agent);
 
         playerSpawnPoint = GameObject.Find("PlayerSpawnPoint");
@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour {
 
     public void Respawn()
     {
-        transform.position = playerSpawnPoint.transform.position;
+        transform.parent.position = playerSpawnPoint.transform.position;
         Player.Health = 100f;
         Player.Armor = 50f;
         Player.InitStats(progressBars);

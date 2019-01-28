@@ -12,7 +12,7 @@ namespace EnemyAgent
         public float Range; //problem
         public float Health;
 
-        public NavMeshAgent Agent;
+        public NavMeshAgent Agent { get; set; }
 
         public Enemy(NavMeshAgent agent)
         {

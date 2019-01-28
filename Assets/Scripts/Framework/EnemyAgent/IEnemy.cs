@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 namespace EnemyAgent
 {
     public interface IEnemy
     {
-        float ChangeHealth(float AmountToChange);
+        NavMeshAgent Agent { get; set; }
     }
 }
