@@ -83,6 +83,16 @@ namespace Pool
             poolItem.SetActive(false);
             return poolItem;
         }
+
+        public int GetAvailable ()
+        {
+            return availableItems.Count;
+        }
+
+        public int GetSize()
+        {
+            return allItems.Count;
+        }
     }
 }
 

@@ -44,6 +44,16 @@ namespace Pool
             return pool;
         }
 
+        public IPool<GameObject> GetPool(GameObject prefab)
+        {
+            return GetPool(prefab.name);
+        }
+
+        public IPool<GameObject> GetPool(string name)
+        {
+            return pools[name];
+        }
+
         public GameObject GetFromPool(GameObject prefab)
         {
             if(pools.ContainsKey(prefab.name))
