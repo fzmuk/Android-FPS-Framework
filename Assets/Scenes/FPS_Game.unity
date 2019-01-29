@@ -589,7 +589,7 @@ Prefab:
       value: PlayerSpawnPoint
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 65394088128656164, guid: 23ef9f566d0bae4419290b1c53fcdc55, type: 2}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 23ef9f566d0bae4419290b1c53fcdc55, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &132993026
@@ -2406,74 +2406,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4618663575428644, guid: dbaa58657db866140b989ca4a0fc01c2,
     type: 2}
   m_PrefabInternal: {fileID: 497992435}
---- !u!1001 &519632582
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 95.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 48.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 56.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.03131144
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.44624084
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0.015625136
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.8942285
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114625374277005730, guid: 13c46916fa552fb4e846d566e8b3a073,
-        type: 2}
-      propertyPath: JoystickControl
-      value: 
-      objectReference: {fileID: 1924937771}
-    - target: {fileID: 114325155897860950, guid: 13c46916fa552fb4e846d566e8b3a073,
-        type: 2}
-      propertyPath: HpProgressBar
-      value: 
-      objectReference: {fileID: 24370979}
-    - target: {fileID: 114325155897860950, guid: 13c46916fa552fb4e846d566e8b3a073,
-        type: 2}
-      propertyPath: ArProgressBar
-      value: 
-      objectReference: {fileID: 320482574}
-    - target: {fileID: 1000010210776282, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012701132938, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114625374277005730, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-    - {fileID: 114325155897860950, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-    - {fileID: 136117567162518910, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-  m_SourcePrefab: {fileID: 100100000, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &546401894
 Prefab:
   m_ObjectHideFlags: 0
@@ -3839,49 +3771,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4618663575428644, guid: dbaa58657db866140b989ca4a0fc01c2,
     type: 2}
   m_PrefabInternal: {fileID: 926644746}
---- !u!1 &942854645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1790744367289860, guid: 13c46916fa552fb4e846d566e8b3a073,
-    type: 2}
-  m_PrefabInternal: {fileID: 519632582}
---- !u!136 &942854647
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 942854645}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: -0.1}
---- !u!114 &942854648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 942854645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf9813f687d30648a78e4ec62271231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HpProgressBar: {fileID: 24370979}
-  ArProgressBar: {fileID: 320482574}
---- !u!114 &942854649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 942854645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06f5fbb559db89418c2861dd50c0884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JoystickControl: {fileID: 1924937771}
 --- !u!1001 &953434905
 Prefab:
   m_ObjectHideFlags: 0
@@ -4737,6 +4626,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4618663575428644, guid: dbaa58657db866140b989ca4a0fc01c2,
     type: 2}
   m_PrefabInternal: {fileID: 1113897930}
+--- !u!1001 &1121005696
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 95.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 48.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 56.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.03131144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.44624084
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.015625136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8942285
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013501991808, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114265799243868626, guid: 13c46916fa552fb4e846d566e8b3a073,
+        type: 2}
+      propertyPath: HpProgressBar
+      value: 
+      objectReference: {fileID: 24370979}
+    - target: {fileID: 114265799243868626, guid: 13c46916fa552fb4e846d566e8b3a073,
+        type: 2}
+      propertyPath: ArProgressBar
+      value: 
+      objectReference: {fileID: 320482574}
+    - target: {fileID: 114237494833433522, guid: 13c46916fa552fb4e846d566e8b3a073,
+        type: 2}
+      propertyPath: JoystickControl
+      value: 
+      objectReference: {fileID: 1924937771}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13c46916fa552fb4e846d566e8b3a073, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1145832620
 Prefab:
   m_ObjectHideFlags: 0
@@ -5031,7 +4977,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413756, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198482, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}
       propertyPath: m_Name
@@ -9861,7 +9807,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 36.9, y: -67.4, z: 0}
 --- !u!1001 &2040823897
 Prefab:

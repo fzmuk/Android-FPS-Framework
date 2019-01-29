@@ -7,9 +7,9 @@ public class CratesManagement : MonoBehaviour {
 
     public GameObject[] SpawnPoints;
     public GameObject CratePrefab;
+    public Crates crates = new Crates();
 
-    private Transform spawnPoints;
-    Crates crates = new Crates();
+    private Transform spawnPoints;    
 
     // Use this for initialization
     void Start () {
@@ -25,10 +25,14 @@ public class CratesManagement : MonoBehaviour {
 
         crates.InitCrates(SpawnPoints, CratePrefab);
         crates.SetCrates();
+        StartCoroutine("Reset");
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(20f);
+        crates.SetCrates();
+        StartCoroutine("Reset");
+    }
+
 }

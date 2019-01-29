@@ -47,21 +47,19 @@ namespace Pool
 
             GenerateRandomList(CrateList.Length);
             
-            /*for (int i = 0; i < CrateList.Length; i++)
+            for (int i = 0; i < CrateList.Length; i++)
             {
                 crate = CrateList[i];
                 crate.SetActive(false);
                 CrateList[i] = crate;
             }
-            Debug.Log(randNumberOfCrates);
 
             for (int i = 0; i < randNumberOfCrates; i++)
             {
                 CrateList[randomList[0]].SetActive(true);
                 randomList.RemoveAt(0);
-            }*/
+            }
         }
-
         
         public void ReturnCrate(GameObject crate)
         {
