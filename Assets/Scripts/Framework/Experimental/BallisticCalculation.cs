@@ -6,7 +6,12 @@ using System.Text;
 
 namespace Assets.Scripts.Framework.Experimental
 {
-
+    /// <summary>
+    /// Apstract class that implements BallisicCalculation, the calculation of ballistics, 
+    /// or the integration of the missile path along with the calculated air resistance. 
+    /// Template method pattern: the class has two hook methods that in specific classes contain fragments 
+    /// of algorithms that differ depending on whether fast or slow projectiles are counted.
+    /// </summary>
     /* template method pattern */
     public abstract class BallisticCalculation : IBallisticCalculation
     {
@@ -20,7 +25,9 @@ namespace Assets.Scripts.Framework.Experimental
         protected double Re; //reynolds number
         protected double D_over_m;
         protected double gamescale;
-
+        /// <summary>
+        /// Constructor of the class.
+        /// </summary>
         public BallisticCalculation()
         {
             g = 9.81;
@@ -38,7 +45,17 @@ namespace Assets.Scripts.Framework.Experimental
         {
             return gamescale;
         }
-
+        /// <summary>
+        /// Method that calculates part of the missile track using RK4 
+        /// (Runge-Angle 4th order) method of numerical integration.
+        /// </summary>
+        /// <param name="vx"></param>Y component speed. Vertical speed component. Transfer through reference.
+        /// <param name="vy"></param>X component speed. Horizonatl speed component. Transfer through reference.
+        /// <param name="x"></param>X position component. Horizontal component of the position (distance). Transfer through references.
+        /// <param name="y"></param>Y position component. Vertical component of the position (height). Transfer through references.
+        /// <param name="angle"></param>Angle of the projectile. Transfer through reference.
+        /// <param name="t"></param>Time of the flight. Transfer through reference.
+        /// <param name="h"></param>Time slice between two consecutive calculations. Discrete integration time.
         public void Calculate(ref double vx, ref double vy, ref double x, ref double y, ref double angle, ref double t, double h)
         {
             RungeKuttaDynamics(ref vx, ref vy, h);
@@ -52,12 +69,27 @@ namespace Assets.Scripts.Framework.Experimental
             else
                 angle = -3.1415927 * 0.5;
         }
+        /// <summary>
+        /// Other variant (polymorphism). Method that calculates part of the missile track using 
+        /// RK4 (Runge-Angle 4th order) method of numerical integration.
+        /// </summary>
+        /// <param name="vx"></param>Y component speed. Vertical speed component. Transfer through reference.
+        /// <param name="vy"></param>X component speed. Horizonatl speed component. Transfer through reference.
+        /// <param name="x"></param>X position component. Horizontal component of the position (distance). Transfer through references.
+        /// <param name="y"></param>Y position component. Vertical component of the position (height). Transfer through references.
+        /// <param name="h"></param>Time slice between two consecutive calculations. Discrete integration time.
         public void Calculate(ref double x, ref double y, ref double vx, ref double vy, double h)
         {
             RungeKuttaDynamics(ref vx, ref vy, h);
             x += h * vx;
             y += h * vy;
         }
+        /// <summary>
+        /// Private method - algorithm Runge-Angle 4th order.
+        /// </summary>
+        /// <param name="vx"></param>Y component speed. Vertical speed component. Transfer through reference.
+        /// <param name="vy"></param>X component speed. Horizonatl speed component. Transfer through reference.
+        /// <param name="h"></param>Time slice between two consecutive calculations. Discrete integration time.
         private void RungeKuttaDynamics(ref double vx, ref double vy, double h)
         {
             double sixth = 1.0 / 6.0;

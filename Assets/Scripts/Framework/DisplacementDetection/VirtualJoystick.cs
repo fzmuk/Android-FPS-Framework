@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 
 namespace DisplacementDetection
 {
+    /// <summary>
+    /// Class that implements functionality of the virtual joystick.
+    /// </summary>
     public class VirtualJoystick : IDisplacement
     {
         private Image joystickButton;
@@ -12,7 +15,11 @@ namespace DisplacementDetection
         private Vector2 position;
         private Vector2 inputVector;
         private bool pressed;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="joystick"></param>Base of the joystick. Usually bigger circular.
+        /// <param name="joystickButton"></param>Button of the joystick. Usually smaller circular.
         public VirtualJoystick(Image joystick, Image joystickButton)
         {
             this.joystick = joystick.GetComponent<Image>();
@@ -36,7 +43,11 @@ namespace DisplacementDetection
             }
 
         }
-
+        /// <summary>
+        /// Method that returns true if the area of the joystick is clicked.
+        /// </summary>
+        /// <param name="ped"></param>Data about event, if it's used mouse or touch.
+        /// <returns></returns>
         public bool JoystickHit(PointerEventData ped)
         {
             var outerJoysticIsHit = RectTransformUtility
@@ -53,18 +64,24 @@ namespace DisplacementDetection
             return outerJoysticIsHit;
         }
 
- 
+        /// <summary>
+        /// Method checks if joystick is used.
+        /// </summary>
         public void PressedJoystick()
         {
             pressed = true;
         }
-
+        /// <summary>
+        /// Method releases using joystick and returns smaller circular in start position.
+        /// </summary>
         public void ReleaseJoystick()
         {
             pressed = false;
             joystickButton.rectTransform.anchoredPosition = Vector3.zero;
         }
-
+        /// <summary>
+        /// Method that moves smaller circular inside bigger one.
+        /// </summary>
         public void MoveJoistickButton()
         {
             joystickButton.rectTransform.anchoredPosition = Shift;

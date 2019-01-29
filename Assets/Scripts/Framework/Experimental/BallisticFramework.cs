@@ -6,6 +6,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Framework.Experimental
 {
+    /// <summary>
+    /// Concrete class that realizes the IBallisticFramework interface. 
+    /// Framework part that connects the class of ballistic calculations with the application logic. 
+    /// Transforms internal coordinates according to the game engine coordinates. 
+    /// It gives an initiative to ballistic calculations to launch a new calculations.
+    /// </summary>
     public class BallisticFramework : IBallisticFramework
     {
         protected IBallisticCalculation calculation;
@@ -23,7 +29,15 @@ namespace Assets.Scripts.Framework.Experimental
             position = new Vector3(0.0f, 0.0f, 0.0f);
             x = y = vx = vy = 0.0; 
         }
-
+        /// <summary>
+        /// Initializes ballistic part of the framework.
+        /// </summary>
+        /// <param name="projectile"></param>Object on the ballistic scene to be controlled by the ballistics - the missile.
+        /// <param name="calculation"></param>Delegate if ballistic calculations.
+        /// <param name="azimuth"></param>Azimuth of the ballistic path.
+        /// <param name="elevation"></param>Tilting of the tube.
+        /// <param name="position"></param>The position of the projectile, written in the Unity Vector3 form.
+        /// <param name="speed"></param>Amount of thes tarting missile speed.
         public void Init(GameObject projectile, IBallisticCalculation calculation, double azimuth, double elevation, Vector3 position, double speed)
         {
             this.projectile = projectile;
@@ -40,7 +54,14 @@ namespace Assets.Scripts.Framework.Experimental
             vy = speed * Math.Sin(elevation); //projectile initial conditions
             //Debug.Log("Ballistic: shot at elevation "+elevation+" radians in azimuthal direction of "+azimuth+" radians starting from x: "+position.x+", y: "+position.y+", z: "+position.z);
         }
-
+        /// <summary>
+        /// Initialization of the ballistic part of frameworks. Polymorphism. 
+        /// This method takes the object from the Unity engine of the Transform class.
+        /// </summary>
+        /// <param name="projectile"></param>Object on the ballistic scene to be controlled by the ballistics - the missile.
+        /// <param name="calculation"></param>Delegate if ballistic calculations.
+        /// <param name="transform"></param>The position and orientation of the tubes, written in the Unity form of Transform.
+        /// <param name="speed"></param>Amount of thes tarting missile speed.
         public void Init(GameObject projectile, IBallisticCalculation calculation, Transform transform, double speed)
         {
             this.projectile = projectile;
@@ -63,7 +84,9 @@ namespace Assets.Scripts.Framework.Experimental
             //Debug.Log("Ballistic: shot at elevation " + elevation + " radians in azimuthal direction of " + azimuth + " radians starting from x: " + x + ", y: " + y);
         }
 
-
+        /// <summary>
+        /// Notification of ballistics to start a new calculation.
+        /// </summary>
         /* 
             Update on each frame
          */

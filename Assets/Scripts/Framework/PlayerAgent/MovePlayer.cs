@@ -3,6 +3,9 @@ using DisplacementDetection;
 
 namespace PlayerAgent
 {
+    /// <summary>
+    /// Class that connects movement of the player with joystick.
+    /// </summary>
     public class MovePlayer
     {
 
@@ -10,14 +13,20 @@ namespace PlayerAgent
         private IDisplacement displacementInput;
 
         Player player;
-
-
+        /// <summary>
+        /// Constructor of the class.
+        /// </summary>
+        /// <param name="player"></param>Object that represents player that is necessary to move.
+        /// <param name="displacementInput"></param>Vector of the movement.
         public MovePlayer(Player player, IDisplacement displacementInput)
         {
             this.player = player;
             this.displacementInput = displacementInput;
         }
-
+        /// <summary>
+        /// Method that moves player. It's necessary NevMashAgent component on the object.
+        /// </summary>
+        /// <param name="slow"></param>Value for which is possible to slow down the movement.
         public void PlayerMove(int slow)
         {
             var inputVector = displacementInput.Shift;

@@ -6,6 +6,11 @@ using Helpers;
 
 namespace PlayerAgent
 {
+    /// <summary>
+    /// Class used for rotating object depending on the entry. 
+    /// Intended for the rotation of the character in FPS games.
+    /// Entry data receives from the object implemented by IDisplacement.
+    /// </summary>
     public class PlayerRotate
     {
 
@@ -16,7 +21,12 @@ namespace PlayerAgent
 
         public float AngleLimitUp { get; set; }
         public float AngleLimitDown { get; set; }
-
+        /// <summary>
+        /// Constructor of the class.
+        /// </summary>
+        /// <param name="shiftInput"></param>Object through data for rotation are received.
+        /// <param name="verticalRotationObject"></param>Object that rotates.
+        /// <param name="horizontalRotationObject"></param>Object that rotates.
         public PlayerRotate(IDisplacement shiftInput, GameObject verticalRotationObject, GameObject horizontalRotationObject)
         {
             this.shiftInput = shiftInput;
@@ -25,7 +35,9 @@ namespace PlayerAgent
             AngleLimitUp = 45f;
             AngleLimitDown = 45f;
         }
-
+        /// <summary>
+        /// Constructor of the class. During execute, method rotates an object depending on default shift.
+        /// </summary>
         public void RotatePlayer()
         {
             var shift = shiftInput.Shift;

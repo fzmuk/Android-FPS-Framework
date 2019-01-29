@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4134367644602718}
   - component: {fileID: 65216387088581364}
+  - component: {fileID: 54532123941761054}
   m_Layer: 0
   m_Name: Crate 1
   m_TagString: Untagged
@@ -114,6 +115,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1516258547873418}
   m_Mesh: {fileID: 4300000, guid: 84d44352b3d109a45b705049de4e0ab2, type: 3}
+--- !u!54 &54532123941761054
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008455474485258}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65216387088581364
 BoxCollider:
   m_ObjectHideFlags: 1
