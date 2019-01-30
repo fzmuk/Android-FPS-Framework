@@ -6,15 +6,24 @@ namespace Pool
 {
     public class Crates {
 
+        GameObject[] crateList;
+        public GameObject[] CrateList
+        {
+            get { return crateList; }
+        }
+
         int randNumberOfCrates;
-        int randCrate;
+        public int RandNumberOfCrates
+        {
+            get { return randNumberOfCrates; }
+        }
+
         GameObject crate;
-        GameObject[] CrateList;
         List<int> randomList = new List<int>();
 
         public void InitCrates(GameObject[] spawnPointList, GameObject cratePrefab)
         {
-            CrateList = new GameObject[spawnPointList.Length];
+            crateList = new GameObject[spawnPointList.Length];
 
             for (int i = 0; i < spawnPointList.Length; i++)
             {
@@ -22,11 +31,11 @@ namespace Pool
                 crate.transform.position = spawnPointList[i].transform.position;
                 crate.transform.rotation = spawnPointList[i].transform.rotation;
                 crate.SetActive(false);
-                CrateList[i] = crate;
+                crateList[i] = crate;
             }
         }
 
-        public void GenerateRandomList(int size)
+        private void GenerateRandomList(int size)
         {
             for (int i = 0; i < size; i++)
                 randomList.Add(i);
@@ -43,20 +52,20 @@ namespace Pool
 
         public void SetCrates()
         {
-            randNumberOfCrates = Random.Range(0, CrateList.Length);
+            randNumberOfCrates = Random.Range(0, crateList.Length);
 
-            GenerateRandomList(CrateList.Length);
+            GenerateRandomList(crateList.Length);
             
-            for (int i = 0; i < CrateList.Length; i++)
+            for (int i = 0; i < crateList.Length; i++)
             {
-                crate = CrateList[i];
+                crate = crateList[i];
                 crate.SetActive(false);
-                CrateList[i] = crate;
+                crateList[i] = crate;
             }
 
             for (int i = 0; i < randNumberOfCrates; i++)
             {
-                CrateList[randomList[0]].SetActive(true);
+                crateList[randomList[0]].SetActive(true);
                 randomList.RemoveAt(0);
             }
         }
