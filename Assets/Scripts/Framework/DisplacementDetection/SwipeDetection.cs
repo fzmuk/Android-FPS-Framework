@@ -6,6 +6,11 @@ using UnityEngine.EventSystems;
 
 namespace DisplacementDetection
 {
+    /// <summary>
+    ///  Class intended for the detection of the movement through touch screen. 
+    ///  During development it's also enabled to use the mouse.
+    ///  It can be added using method AddComponent<SwipeDetection> on the object that is being added.
+    /// </summary>
     public class SwipeDetection : MonoBehaviour, IDisplacement
     {
         public Vector2 Shift { get; private set; }
@@ -16,18 +21,18 @@ namespace DisplacementDetection
         private bool inputSelected;
 
 #if UNITY_EDITOR
-        // used for mouse debugging in Unity editor
+        /// <summary>
+        /// Used for mouse debugging in Unity editor.
+        /// </summary>
         public Vector3 MouseShift;
         bool mouseDrag = false;
 #endif
-
         private void Start()
         {
             MovmentRate = 1f;
             inputSelected = false;
             Shift = new Vector2();
         }
-
         private void Update()
         {
             Shift = new Vector2();
@@ -56,10 +61,8 @@ namespace DisplacementDetection
                         }
                     }
                 }
-
             }
 #if UNITY_EDITOR
-            // used for mouse debugging in Unity editor
             if (Input.GetMouseButtonDown(0))
             {
                 MouseShift = Input.mousePosition;

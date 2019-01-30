@@ -339,11 +339,8 @@ GameObject:
   - component: {fileID: 4000013501991808}
   - component: {fileID: 95638724084861010}
   - component: {fileID: 54448548830777500}
-  - component: {fileID: 136117567162518910}
   - component: {fileID: 195028743997919970}
-  - component: {fileID: 114625374277005730}
   - component: {fileID: 114793696481154772}
-  - component: {fileID: 114325155897860950}
   m_Layer: 0
   m_Name: FPS_Character_prefab
   m_TagString: neprijatelj
@@ -1175,9 +1172,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4090231161663152}
+  - component: {fileID: 136248825490070572}
+  - component: {fileID: 114265799243868626}
+  - component: {fileID: 114237494833433522}
   m_Layer: 0
   m_Name: CharacterBody
-  m_TagString: Untagged
+  m_TagString: neprijatelj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2392,12 +2392,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114325155897860950
+--- !u!114 &114237494833433522
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010973930614}
+  m_GameObject: {fileID: 1790744367289860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06f5fbb559db89418c2861dd50c0884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JoystickControl: {fileID: 0}
+--- !u!114 &114265799243868626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790744367289860}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cf9813f687d30648a78e4ec62271231, type: 3}
@@ -2416,18 +2428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713d2c1e366f77a42ae69581477350f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114625374277005730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010973930614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06f5fbb559db89418c2861dd50c0884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JoystickControl: {fileID: 0}
 --- !u!114 &114793696481154772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2448,12 +2448,12 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472860031361328}
   m_Enabled: 1
---- !u!136 &136117567162518910
+--- !u!136 &136248825490070572
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010973930614}
+  m_GameObject: {fileID: 1790744367289860}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

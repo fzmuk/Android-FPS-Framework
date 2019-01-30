@@ -6,8 +6,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Framework.Experimental
 {
-
-
+    /// <summary>
+    /// Class for realization of the IBallisticGauge interface. Used to measure ballistic parameters such as maximum range.
+    /// </summary>
     public class BallisticGauge : IBallisticGauge
     {
         protected IBallisticCalculation calculation;
@@ -20,13 +21,23 @@ namespace Assets.Scripts.Framework.Experimental
             elevation = 0.0f;
             position = new Vector3(0.0f, 0.0f, 0.0f);
         }
-
+        /// <summary>
+        /// Inicialization.
+        /// </summary>
+        /// <param name="calculation"></param>Delegate for statistic calculation.
+        /// <param name="speed"></param>Amount of speed.
+        /// <param name="elevation"></param>Slope of the tube.
         public void Init(IBallisticCalculation calculation, double speed, double elevation)
         {
             Init(null, calculation, 0.0, elevation, new Vector3(0.0f, 0.0f), speed);
         }
-
-        //due to interface compatibility
+        /// <summary>
+        /// Polymorphism. Initialization of this form due to compatibility with the interface.
+        /// </summary>
+        /// <param name="projectile"></param>It's not used. Due to the compability with IBallisticFramework interface.
+        /// <param name="calculation"></param>Delegate for statistic calculation.
+        /// <param name="transform"></param>Unity record for position and orientation.
+        /// <param name="speed"></param>Amount of speed.
         public void Init(GameObject projectile, IBallisticCalculation calculation, Transform transform, double speed)
         {
             elevation = 360.0f - transform.eulerAngles.x;
@@ -35,7 +46,15 @@ namespace Assets.Scripts.Framework.Experimental
             elevation *= Mathf.Deg2Rad;
             Init(projectile, calculation, 0.0, elevation, position, speed);
         }
-        //due to interface compatibility
+        /// <summary>
+        /// Polymorphism. Initialization of this form due to compatibility with the interface.
+        /// </summary>
+        /// <param name="projectile"></param>It's not used. Due to the compability with IBallisticFramework interface.
+        /// <param name="calculation"></param>Delegate for statistic calculation.
+        /// <param name="azimuth"></param>Azimuth of the ballistic path.
+        /// <param name="elevation"></param>Slope of the tube.
+        /// <param name="position"></param>Position at firing.
+        /// <param name="speed"></param>Amount of the speed.
         public void Init(GameObject projectile, IBallisticCalculation calculation, double azimuth, double elevation, Vector3 position, double speed)
         {
             this.calculation = calculation;
@@ -46,12 +65,17 @@ namespace Assets.Scripts.Framework.Experimental
             vx = this.speed * Math.Cos(elevation); //projectile initial conditions
             vy = this.speed * Math.Sin(elevation); //projectile initial conditions
         }
-
-
+        /// <summary>
+        /// Notification of ballistics to calculate the next position of the projectile. It's not used.
+        /// </summary>
         public void OnUpdate()
         {
             
         }
+        /// <summary>
+        /// Calculates the range of projectiles. No parameters. Calculation parameters were entered while initialization.
+        /// </summary>
+        /// <returns></returns>
         //calculating range using current elevation - not maximal range
         public double CalculateRange()
         {
@@ -79,12 +103,21 @@ namespace Assets.Scripts.Framework.Experimental
             } while (local_y > 0.0); //passed ground plane
             return local_x;
         }
+        /// <summary>
+        /// Calculates the range of the projectile at the most favorable angle (elevation). No parameters. 
+        /// Calculation parameters were entered while initialization.
+        /// </summary>
+        /// <returns></returns>
         public double CalculateMaximumRange()
         {
             double elevation = 0.0;
             return CalculateMaximumRange(ref elevation);
         }
-
+        /// <summary>
+        /// Calculates the range of projectiles. Elevation parameter.
+        /// </summary>
+        /// <param name="elevation"></param>Tube inclination (elevation). Transferring references. 
+        /// After calculation, the most favorable angle will be returned, which due to aerodynamics does not have to be 45°.
         public double CalculateMaximumRange(ref double elevation)
         {
             double maxRange = 0.0;

@@ -6,9 +6,8 @@ using Pool;
 public class GamePoolManager : MonoBehaviour {
 
     public PoolMenager poolManager;
-
     public GameObject BulletPrefab;
-
+    
 	// Use this for initialization
 	void Start () {
         poolManager = PoolMenager.Instance;

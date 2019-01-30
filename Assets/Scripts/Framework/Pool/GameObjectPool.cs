@@ -5,16 +5,26 @@ using UnityEngine;
 
 namespace Pool
 {
+    /// <summary>
+    /// Class that implemants pools of GameObject type
+    /// </summary>
     public class GameObjectPool: IPool<GameObject>
     {
+        /// <summary>
+        /// Object from wich pool is made
+        /// </summary>
         public GameObject Prefab;
 
+        /// <summary>
+        /// Initial pool size
+        /// </summary>
         public int InitialSize = 10;
 
         protected List<GameObject> allItems;
 
         protected List<GameObject> availableItems;
 
+        /// <param name="prefab">Object from wich pool is made</param>
         public GameObjectPool(GameObject prefab)
         {
             Prefab = prefab;
@@ -23,6 +33,8 @@ namespace Pool
             Grow(InitialSize);
         }
 
+        /// <param name="prefab">Object from wich pool is made</param>
+        /// <param name="initialSize">Initial pool size</param>
         public GameObjectPool(GameObject prefab, int initialSize)
         {
             Prefab = prefab;
@@ -41,6 +53,10 @@ namespace Pool
 
         }
 
+        /// <summary>
+        /// Method that returns object into pool
+        /// </summary>
+        /// <param name="poolItem">Object to return</param>
         public void Return(GameObject poolItem)
         {
             if (Contains(poolItem) && !availableItems.Contains(poolItem))
@@ -50,6 +66,10 @@ namespace Pool
             }
         }
 
+        /// <summary>
+        /// The method retrieves the object from the pool
+        /// </summary>
+        /// <returns></returns>
         public GameObject Get() 
         {
             if (availableItems.Count == 0)
@@ -63,6 +83,10 @@ namespace Pool
             return poolItem;
         }
 
+        /// <summary>
+        /// The method increases initial number of objects in the pool
+        /// </summary>
+        /// <param name="amount"></param>
         public void Grow(int amount)
         {
             for (int i = 0; i < amount; i++)
@@ -71,6 +95,11 @@ namespace Pool
             }
         }
 
+        /// <summary>
+        /// Method checks if object exists in the pool
+        /// </summary>
+        /// <param name="gameObject">Object to find</param>
+        /// <returns></returns>
         public bool Contains(GameObject gameObject)
         {
             return allItems.Contains(gameObject);
@@ -82,6 +111,24 @@ namespace Pool
             poolItem.name = Prefab.name;
             poolItem.SetActive(false);
             return poolItem;
+        }
+
+        /// <summary>
+        ///  Method returns how many objects are available in the pool
+        /// </summary>
+        /// <returns></returns>
+        public int GetAvailable ()
+        {
+            return availableItems.Count;
+        }
+
+        /// <summary>
+        /// Method that returns size of the pool
+        /// </summary>
+        /// <returns></returns>
+        public int GetSize()
+        {
+            return allItems.Count;
         }
     }
 }

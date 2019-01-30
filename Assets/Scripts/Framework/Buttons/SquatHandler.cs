@@ -5,35 +5,35 @@ using UnityEngine.UI;
 
 namespace Buttons
 {
-
     public class SquatHandler : MonoBehaviour, IButtonHandler
     {
-
-        // Use this for initialization
+        /// <summary>
+        /// Used for initialization.
+        /// </summary>
         void Start()
         {
             Button button = gameObject.GetComponent<Button>();
             button.onClick.AddListener(Click);
             
         }
-
-        // Update is called once per frame
+        /// <summary>
+        /// Called once per frame.
+        /// </summary>
         void Update()
         {
 
         }
-
         void OnPointerDown()
         {
             Debug.Log("Pointer down SQUAT");
         }
-
+        /// <summary>
+        /// Temporary just show text in debug log.
+        /// </summary>
         public void Click()
         {
-            //temporary just show text in debug log
             Debug.Log("Clicked SQUAT");
         }
-
         public void Pressed()
         {
 
@@ -42,8 +42,5 @@ namespace Buttons
         {
 
         }
-
     }
-
-
 }
