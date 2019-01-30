@@ -10,5 +10,4 @@ namespace Buttons
         void Pressed();
         void Released();
     }
-
 }

@@ -26,7 +26,6 @@ namespace EnemyAgent
         {
             Agent = agent;
         }
-
         public float StoppingDistance
         {
             get
@@ -38,7 +37,6 @@ namespace EnemyAgent
                 Agent.stoppingDistance = value;
             }
         }
-
         public float Acceleration
         {
             get
@@ -50,7 +48,6 @@ namespace EnemyAgent
                 Agent.acceleration = value;
             }
         }
-
         public float Speed
         {
             get
@@ -63,7 +60,7 @@ namespace EnemyAgent
             }
         }
         /// <summary>
-        /// Method for finding FPS player through the name of the object, and gives back the found object.
+        /// Method for finding FPS player through the name of the object, and returns the found object.
         /// </summary>
         /// <param name="name"></param>Name of the object.
         /// <returns></returns>
@@ -73,7 +70,7 @@ namespace EnemyAgent
             return oponent;
         }
         /// <summary>
-        /// Method for finding FPS player through the name of the tag of the object, and gives back the found object.
+        /// Method for finding FPS player through the name of the tag of the object, and returns the found object.
         /// </summary>
         /// <param name="tag"></param>Name of the tag of the object.
         /// <returns></returns>
@@ -83,9 +80,9 @@ namespace EnemyAgent
             return oponent;
         }
         /// <summary>
-        /// Implementation of the interface. Method manages with points of life of the enemy and
-        /// saves the changes in the attribute Health. Value which is entered if the enemy is sctricken
-        /// has negative sign.
+        /// Implementation of the interface. 
+        /// Method manages with points of life of the enemy and saves the changes in the attribute Health. 
+        /// Value which is entered if the enemy is stricken has negative sign.
         /// </summary>
         private float startHealth = -Mathf.Infinity;
 
@@ -98,6 +95,5 @@ namespace EnemyAgent
 
             return Health / startHealth;
         }
-
     }
 }

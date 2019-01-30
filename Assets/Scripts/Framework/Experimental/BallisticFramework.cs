@@ -32,12 +32,12 @@ namespace Assets.Scripts.Framework.Experimental
         /// <summary>
         /// Initializes ballistic part of the framework.
         /// </summary>
-        /// <param name="projectile"></param>Object on the ballistic scene to be controlled by the ballistics - the missile.
+        /// <param name="projectile"></param>Object on the ballistic scene to be controlled by the ballistics, the missile.
         /// <param name="calculation"></param>Delegate if ballistic calculations.
         /// <param name="azimuth"></param>Azimuth of the ballistic path.
         /// <param name="elevation"></param>Tilting of the tube.
         /// <param name="position"></param>The position of the projectile, written in the Unity Vector3 form.
-        /// <param name="speed"></param>Amount of thes tarting missile speed.
+        /// <param name="speed"></param>Amount of starting missile speed.
         public void Init(GameObject projectile, IBallisticCalculation calculation, double azimuth, double elevation, Vector3 position, double speed)
         {
             this.projectile = projectile;
@@ -58,10 +58,10 @@ namespace Assets.Scripts.Framework.Experimental
         /// Initialization of the ballistic part of frameworks. Polymorphism. 
         /// This method takes the object from the Unity engine of the Transform class.
         /// </summary>
-        /// <param name="projectile"></param>Object on the ballistic scene to be controlled by the ballistics - the missile.
+        /// <param name="projectile"></param>Object on the ballistic scene to be controlled by the ballistics, the missile.
         /// <param name="calculation"></param>Delegate if ballistic calculations.
         /// <param name="transform"></param>The position and orientation of the tubes, written in the Unity form of Transform.
-        /// <param name="speed"></param>Amount of thes tarting missile speed.
+        /// <param name="speed"></param>Amount of the starting missile speed.
         public void Init(GameObject projectile, IBallisticCalculation calculation, Transform transform, double speed)
         {
             this.projectile = projectile;
@@ -83,13 +83,9 @@ namespace Assets.Scripts.Framework.Experimental
             //Debug.Log("Weapon pos: x: " + transform.position.x + ", y: " + transform.position.y + ", z: " + transform.position.z);
             //Debug.Log("Ballistic: shot at elevation " + elevation + " radians in azimuthal direction of " + azimuth + " radians starting from x: " + x + ", y: " + y);
         }
-
         /// <summary>
-        /// Notification of ballistics to start a new calculation.
+        /// Notification of ballistics to start a new calculation. Update on each frame.
         /// </summary>
-        /* 
-            Update on each frame
-         */
         public void OnUpdate()
         {
             double x1, y1, z1;
@@ -101,9 +97,7 @@ namespace Assets.Scripts.Framework.Experimental
             seconds = (elapsed.Seconds * 1000 + elapsed.Milliseconds) / 1000.0;
             // Debug.Log("Seconds elapsed: " + seconds+", posX: "+position);
             calculation.Calculate(ref x, ref y, ref vx, ref vy, seconds);
-
             //Debug.Log("Ballistic position: x: " + x + ", y: " + y);
-
             //  right coordinate systems
             //  x ballistics -> z scene direction 
             //  y ballistics -> y scene direction (up)
@@ -111,12 +105,10 @@ namespace Assets.Scripts.Framework.Experimental
             x1 = x * Math.Cos(azimuth);
             y1 = y;
             z1 = x * Math.Sin(azimuth);
-
             
             position.x = position.x + (float)z1;
             position.y = position.y + (float)y1;
-            position.z = position.z + (float)x1;
-            
+            position.z = position.z + (float)x1;          
 
             //neglected ballistic projectile rotation
             if (projectile != null) //if projectile exists
@@ -126,8 +118,5 @@ namespace Assets.Scripts.Framework.Experimental
             
             //Debug.Log("Projectile position: x: " + position.x + ", y: " + position.y + ", z: " + position.z);
         }
-
-
-
     }
 }

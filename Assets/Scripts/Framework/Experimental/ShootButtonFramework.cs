@@ -7,12 +7,10 @@ using UnityEngine;
 namespace Assets.Scripts.Framework.Experimental
 {
     public class ShootButtonFramework : IShootButtonFramework
-
     {
         public void OnClick()
         {
 
         }
-
     }
 }

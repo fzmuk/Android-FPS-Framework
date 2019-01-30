@@ -9,10 +9,10 @@ namespace Assets.Scripts.Framework.Experimental
     /// <summary>
     /// A concrete class that through the Template method inherits the abstract class BallisticCalculation, 
     /// concretizing its hook methods and thus the fragments of the algorithm for calculating the motion of a projectile. 
-    /// Each concretization relates to the specific dynamics of the projectile, and this class specifies rapid missiles with a Reynolds number greater than 1000 
+    /// Each concretization relates to the specific dynamics of the projectile, 
+    /// and this class specifies rapid missiles with a Reynolds number greater than 1000 
     /// and thus a quadratic dependence of the velocity air velocity.
     /// </summary>
-    /* template method pattern */
     public class BallisticCalcBullet : BallisticCalculation
     {
         /// <summary>
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Framework.Experimental
         /// <param name="Cv"></param>Air resistance.
         /// <param name="ro"></param>Air density.
         /// <param name="A"></param>The impact section of the missile.
-        /// <param name="gamescale"></param>The Scale of the game wrld and the real world.
+        /// <param name="gamescale"></param>The Scale of the game world and the real world.
         public BallisticCalcBullet(double m, double g, double Cv, double ro, double A, double gamescale)
         {
             this.g = g * gamescale;
@@ -40,8 +40,6 @@ namespace Assets.Scripts.Framework.Experimental
         /// calculating fast missiles with a Reynolds number above 1000 is implemented.
         /// </summary>
         /// <param name="vx"></param>Horizontal speed component.
-        /// <returns></returns>
-        //overrider hook methods
         protected override double DynamicsX(double vx)
         {
             if (Re>1000.0)
@@ -54,7 +52,6 @@ namespace Assets.Scripts.Framework.Experimental
         /// calculating fast missiles with a Reynolds number above 1000 is implemented.
         /// </summary>
         /// <param name="vy"></param>Vertical speed component.
-        /// <returns></returns>
         protected override double DynamicsY(double vy)
         {
             if (Re > 1000.0)

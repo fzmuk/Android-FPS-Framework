@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace EnemyAgent
 {
     /// <summary>
-    /// Inteface that demands each enemy is NavMeshAgent, which means it containts that method.
+    /// Inteface that demands each enemy is NavMeshAgent, which means it contains that method.
     /// </summary>
     public interface IEnemy
     {

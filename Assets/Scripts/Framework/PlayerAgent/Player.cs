@@ -9,7 +9,6 @@ namespace PlayerAgent
     /// </summary> 
     public class Player
     {
-
         public float Health = 0f;
         public float Armor = 0f;
         public NavMeshAgent Agent;
@@ -22,7 +21,7 @@ namespace PlayerAgent
         /// that saves into propertie Agent so through other scripts it is possible
         /// to manage attributes of the player movement on NavMesh.
         /// </summary>
-        /// <param name="agent"></param>NavMesh component necessarie so player can move on NavMesh.
+        /// <param name="agent"></param>NavMesh component necessary so player can move on NavMesh.
         public Player(NavMeshAgent agent)
         {
             Agent = agent;
@@ -31,12 +30,12 @@ namespace PlayerAgent
         /// Method that manages with exchange of the graphic elements for displaying life and armour,
         /// it saves new state of the player. It the player is hit, amountToChange will be negative number
         /// for any change of live or armour, positive value increases last state for forwarded value.
-        /// Because life is atribute that determines game, setting last attribute true will manage with 
-        /// exchaning life while opposite changes apply on armour.
+        /// Because life is attribute that determinates the game, setting last attribute true will manage with 
+        /// exchaning life, while opposite changes apply on armour.
         /// </summary>
         /// <param name="amountToChange"></param>Amount for which some of the attribute of the statistics is neccesary to change.
         /// <param name="progressBar"></param>Graphic element of the intreface on which the result is displayed.
-        /// <param name="hp"></param>If it's true modification is execute on attribute Health, if it's opposite on Armor.
+        /// <param name="hp"></param>If it's true modification is executed on attribute Health, if it's opposite on Armor.
         public void ChangeStats(float amountToChange, Image progressBar, bool hp)
         {
             var fillAmount = 0f;
@@ -59,7 +58,7 @@ namespace PlayerAgent
         }
         /// <summary>
         /// Method that initializes graphical interface on the way that shows maximum values in percentages.
-        /// As parameter it receives array of the graphic elements in a case that user wants to show 
+        /// As parameter it receives array of the graphic elements, in the case that user wants to show 
         /// both attributes of the statistic.
         /// </summary>
         /// <param name="progressBars"></param>Array of the graphic elements that is neccesary to initialize.
@@ -70,6 +69,5 @@ namespace PlayerAgent
                 progressBar.fillAmount = 1;
             }
         }
-
     }
 }

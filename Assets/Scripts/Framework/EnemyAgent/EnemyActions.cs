@@ -10,19 +10,18 @@ namespace EnemyAgent
     public class EnemyActions
     {
         Enemy EnemyMove;
-
         /// <summary>
         /// Constructor of the class that receives object of the enemy class as parameter, 
-        /// that alredy has NayMesh component necessary for managing enemy on NavMesh.
+        /// that alredy has NavMesh component necessary for managing enemy on NavMesh.
         /// </summary>
-        /// <param name="enemy"></param>Object of the enemy class with which method of this class manage.
+        /// <param name="enemy"></param>Object of the enemy class with which method of this class manages.
         public EnemyActions(Enemy enemy) {
             EnemyMove = enemy;
         }
         /// <summary>
-        /// Method that moves enemy to FPS player and followes it though the scene.
-        /// Once that enemy starts to follow the player, it will not stop so this method 
-        /// returns true as indicator that enemy is striking the player.
+        /// Method that moves enemy to the FPS player and follows it through the scene.
+        /// Once that enemy starts to follow the player, it will not stop 
+        /// so this method returns true as indicator that enemy is striking the player.
         /// </summary>
         /// <param name="oponent"></param>Object that enemy should follow.
         public bool Follow(GameObject oponent)
@@ -54,7 +53,6 @@ namespace EnemyAgent
             Vector3 rotacija = Quaternion.Lerp(EnemyMove.Agent.transform.rotation, LookDirection, Time.deltaTime * RotationSpeed).eulerAngles;
 
             EnemyMove.Agent.transform.rotation = Quaternion.Euler(0f, rotacija.y, 0f);
-        }
-        
+        }       
     }
 }

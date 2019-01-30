@@ -26,7 +26,6 @@ namespace DisplacementDetection
             this.joystickButton = joystickButton.GetComponent<Image>();
             pressed = false;
         }
-
         public Vector2 Shift 
         {
             get
@@ -41,12 +40,11 @@ namespace DisplacementDetection
 
                 return new Vector2(x, y);
             }
-
         }
         /// <summary>
         /// Method that returns true if the area of the joystick is clicked.
         /// </summary>
-        /// <param name="ped"></param>Data about event, if it's used mouse or touch.
+        /// <param name="ped"></param>Data about event, when using mouse or touch.
         /// <returns></returns>
         public bool JoystickHit(PointerEventData ped)
         {
@@ -63,7 +61,6 @@ namespace DisplacementDetection
 
             return outerJoysticIsHit;
         }
-
         /// <summary>
         /// Method checks if joystick is used.
         /// </summary>
@@ -72,7 +69,7 @@ namespace DisplacementDetection
             pressed = true;
         }
         /// <summary>
-        /// Method releases using joystick and returns smaller circular in start position.
+        /// Method releases the usage of joystick and returns smaller circular in start position.
         /// </summary>
         public void ReleaseJoystick()
         {

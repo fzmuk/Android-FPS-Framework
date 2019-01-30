@@ -8,7 +8,6 @@ namespace PlayerAgent
     /// </summary>
     public class MovePlayer
     {
-
         //private GameObject player;
         private IDisplacement displacementInput;
 
@@ -24,7 +23,7 @@ namespace PlayerAgent
             this.displacementInput = displacementInput;
         }
         /// <summary>
-        /// Method that moves player. It's necessary NevMashAgent component on the object.
+        /// Method that moves the player. It's necessary NavMashAgent component on the object.
         /// </summary>
         /// <param name="slow"></param>Value for which is possible to slow down the movement.
         public void PlayerMove(int slow)
@@ -33,16 +32,13 @@ namespace PlayerAgent
             var agent = player.Agent;
             Vector3 moveVector;
 
-
             if (inputVector.x != 0 && inputVector.y != 0)
             {
                 moveVector = new Vector3(inputVector.x, 0, inputVector.y);
           
                 agent.Move(agent.transform.TransformDirection(moveVector) * (agent.speed / slow)); //TODO 
                 
-            }
-                 
+            }                 
         }
-
     }
 }

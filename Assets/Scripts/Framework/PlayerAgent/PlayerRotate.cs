@@ -13,11 +13,9 @@ namespace PlayerAgent
     /// </summary>
     public class PlayerRotate
     {
-
         private IDisplacement shiftInput;
         private GameObject verticalRotationObject;
         private GameObject horizontalRotationObject;
-
 
         public float AngleLimitUp { get; set; }
         public float AngleLimitDown { get; set; }
@@ -54,5 +52,4 @@ namespace PlayerAgent
             horizontalRotationObject.transform.Rotate(Vector3.up, shift.x, Space.World);
         }
     }
-
 }
