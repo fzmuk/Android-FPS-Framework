@@ -9,13 +9,13 @@ namespace EnemyAgent
     /// </summary>
     public class EnemyActions
     {
-        Enemy EnemyMove;
+        IEnemy EnemyMove;
         /// <summary>
         /// Constructor of the class that receives object of the enemy class as parameter, 
         /// that alredy has NavMesh component necessary for managing enemy on NavMesh.
         /// </summary>
         /// <param name="enemy"></param>Object of the enemy class with which method of this class manages.
-        public EnemyActions(Enemy enemy) {
+        public EnemyActions(IEnemy enemy) {
             EnemyMove = enemy;
         }
         /// <summary>

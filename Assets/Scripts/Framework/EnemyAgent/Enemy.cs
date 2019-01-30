@@ -15,7 +15,6 @@ namespace EnemyAgent
         public float Range; //problem
         public float Health;
 
-        public NavMeshAgent Agent;
         /// <summary>
         /// Constructor of the class that receives NavMeshAgent component as parameter and
         /// saves into propertie Agent, so through other scripts it's possible to manage
@@ -28,6 +27,7 @@ namespace EnemyAgent
         {
             Agent = agent;
         }
+
         public float StoppingDistance
         {
             get
