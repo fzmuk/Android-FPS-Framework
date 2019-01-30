@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 namespace EnemyAgent
@@ -8,6 +9,6 @@ namespace EnemyAgent
     /// </summary>
     public interface IEnemy
     {
-        float ChangeHealth(float AmountToChange);
+        NavMeshAgent Agent { get; set; }
     }
 }

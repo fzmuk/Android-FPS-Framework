@@ -22,6 +22,8 @@ namespace EnemyAgent
         /// attributes of movement and move enemy on NavMesh.
         /// </summary>
         /// <param name="agent"></param>NavMeshAgent component necessary so enemy can move on NavMesh.
+        public NavMeshAgent Agent { get; set; }
+
         public Enemy(NavMeshAgent agent)
         {
             Agent = agent;
