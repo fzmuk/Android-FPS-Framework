@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4134367644602718}
   - component: {fileID: 65216387088581364}
-  - component: {fileID: 54532123941761054}
+  - component: {fileID: 65651659409024452}
+  - component: {fileID: 54247072018329026}
+  - component: {fileID: 114920070520661172}
   m_Layer: 0
   m_Name: Crate 1
   m_TagString: Untagged
@@ -65,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008455474485258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.83358, y: 49.948143, z: 86.03756}
+  m_LocalPosition: {x: 71.56327, y: 47.279457, z: 64.675804}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4091099784382104}
@@ -115,7 +117,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1516258547873418}
   m_Mesh: {fileID: 4300000, guid: 84d44352b3d109a45b705049de4e0ab2, type: 3}
---- !u!54 &54532123941761054
+--- !u!54 &54247072018329026
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,3 +144,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65651659409024452
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008455474485258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114920070520661172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008455474485258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869897087b7019d4b955b5a1f5786561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 198482, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}
